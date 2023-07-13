@@ -1,0 +1,282 @@
+.liked_display {
+    overflow-y: overlay;
+    width: 84vw;
+    height: 90vh;
+}
+
+.liked_display::-webkit-scrollbar {
+    scrollbar-gutter: stable;
+    width: 10px;
+}
+
+.liked_display::-webkit-scrollbar-thumb {
+    background-color: slategray;
+}
+
+/* DIv for top region */
+.liked_top_div_wrapper {
+    background-image: linear-gradient(180deg, rgb(245, 89, 89), rgb(169, 169, 255));
+    height: 280px;
+}
+
+.liked_top_div {
+    position: relative;
+    left: 0;
+}
+
+.liked_top_div i {
+    margin: 0px 20px 15px 45px;
+}
+
+#liked_playlist_heart {
+    background-image: linear-gradient(120deg, rgb(255, 0, 0), white);
+    font-size: 75px;
+    border-radius: 5px;
+    padding: 80px 80px 65px 80px;
+    color: white;
+    border-radius: 180px;
+}
+
+.liked_head {
+    font-size: 70px;
+}
+
+/* Div for buttons */
+.playicon_open {
+    height: 60px;
+    width: 60px;
+    color: black;
+    margin-left: 42px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* DIV for list of names */
+.liked_bottom_area {
+    top: 0px;
+    color: rgb(255, 255, 255);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    background-color: rgb(7, 2, 30);
+}
+
+.liked_list {
+    padding: 25px 5px 50px 45px;
+    width: 80vw;
+    margin-bottom: 95px;
+}
+
+.likedtable {
+    background-color: rgb(41, 38, 53);
+    padding: 25px;
+    text-align: left;
+    width: 95%;
+    font-size: 14px;
+    border-radius: 15px;
+}
+
+.likedtable th {
+    color: rgb(255, 255, 255);
+}
+
+.likedtd {
+    margin-bottom: 5px;
+}
+
+.liked_span_class {
+    margin-bottom: 3px;
+    color: white;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.likedtd_img {
+    padding-top: 8px;
+    height: 42px;
+    width: 42px;
+}
+
+.likedtd_div {
+    font-size: 12px;
+    padding: 12px 2px 2px 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.likedlist2_active:hover {
+    cursor: pointer;
+    font-weight: bold;
+    color: aliceblue;
+    /* background-color: rgb(88, 87, 102); */
+    background-color: rgb(134, 71, 71);
+}
+
+.bi-heart {
+    z-index: 2;
+}
+
+.bi-heart-fill {
+    z-index: 2;
+}
+
+.heart_icon {
+    color: rgb(255, 113, 113);
+    animation-name: liked;
+    animation-timing-function: ease-in-out;
+    animation-direction: both;
+    animation-duration: 0.5s;
+    animation-delay: 0;
+}
+
+
+
+/* error div */
+.error_show {
+    height: 38.6vh;
+    position: relative;
+}
+
+.error_show div {
+    font-size: 35px;
+    font-weight: bold;
+    position: absolute;
+    top: 15vh;
+    left: 32%;
+    color: rgb(217, 217, 217);
+}
+
+#error_small_show {
+    font-size: 15px;
+    font-weight: bold;
+    position: relative;
+    color: rgb(235, 103, 103);
+}
+
+/* CSS for full screen */
+@media screen and (min-height:790px) {
+    .error_show {
+        height: 45.2vh;
+    }
+
+    .liked_bottom_area {
+        min-height: 46.4vh;
+    }
+
+    .liked_display {
+        height: 92.2%;
+    }
+}
+
+/* resp */
+@media screen and (max-width : 1070px) {
+    .liked_top_div_wrapper {
+        height: 220px;
+    }
+
+    #liked_playlist_heart {
+        margin-top: 10px;
+        font-size: 40px;
+        height: 50px;
+        padding: 50px 50px 40px 50px;
+    }
+
+    .liked_head {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width :895px) {
+    .liked_display {
+        width: 100%;
+    }
+
+    .liked_list {
+        padding-left: 20px;
+        width: calc(100vw - 25px);
+    }
+
+    .likedtable {
+        width: 96%;
+    }
+
+    .liked_top_div i {
+        margin-left: 30px;
+    }
+}
+
+@media screen and (max-width :669px) {
+    .table_plays {
+        display: none;
+    }
+
+    .bi-clock {
+        display: none;
+    }
+
+    .durn_open_list span {
+        display: none;
+    }
+
+    .durn_open_list {
+        position: relative;
+        margin-bottom: 18px;
+    }
+
+    .durn_open_list i {
+        position: absolute;
+        top: 0;
+        right: 18px;
+    }
+
+    /* error div */
+    .error_show div {
+        left: 25%;
+        font-size: 35px;
+    }
+    
+    #error_small_show {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width :500px) {
+    .liked_top_div_wrapper {
+        height: 200px;
+    }
+    
+    #liked_playlist_heart {
+        font-size: 30px;
+        padding: 40px 40px 20px 40px;
+        margin-top: 20px;
+    }
+    
+    .liked_head {
+        font-size: 35px;
+    }
+
+    .liked_list {
+        padding-left: 10px;
+        width: calc(100vw - 15px);
+    }
+    
+    .liked_top_div i {
+        margin-left: 20px;
+    }
+    
+    /* error div */
+    .error_show div {
+        left: 21%;
+        font-size: 27px;
+    }
+    
+    #error_small_show {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width : 394px) {
+    /* error div */
+    .error_show div {
+        left: 15%;
+    }
+}
