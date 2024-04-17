@@ -1,0 +1,128 @@
+/* Top display */
+#playlist_icon{
+    background-color: rgb(38, 38, 38);
+    font-size: 75px;
+    border-radius: 5px;
+    padding: 80px 80px 70px 80px;
+    color: rgb(117, 109, 109);
+}
+/* .heading_text ul li input{
+    height: 78px;
+    width: 526.92px;
+    font-size: 70px;
+    font-weight: bold;
+    outline: none;
+    border: 0;
+    color: lightgrey;
+    background-color: rgb(84, 84, 84);
+}
+.heading_text ul li button{
+    height: 78px;
+    width: 78px;
+    font-size: 70px;
+    font-weight: bold;
+    outline: none;
+    border: 0;
+    color: white;
+    background-color: rgb(84, 84, 84);
+} */
+
+
+/* bottom display */
+.playlist_bottom_area{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 68.6vh;
+    padding-bottom: 20px;
+}
+.playlist_line{
+    border: 0;
+    background-color: rgb(87, 87, 87);
+    height: 1px;
+    margin: 14px 64px 10px 40px;
+}
+.playlist_search span{
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+.playlist_search input{
+    margin-top: 30px;
+    font-size: 15px;
+    height:36px ;
+    width: 374px;
+    color: rgb(198, 198, 198);
+    outline: none;
+    border: 0;
+    background-color: rgba(43,43,42,255);
+    padding-left: 15px;
+}
+#playlist_holder{
+    color: lightgrey;
+}
+.findmore{
+    color: white;
+    position: relative;
+    display: none;
+    height: 20vh;
+}
+.findmore span{
+    margin-right: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 50px;
+}
+.findmore span:hover{
+    text-decoration: underline;
+}
+.bi-x-circle{
+    margin-top: 0px;
+    font-size: 22px;
+    cursor: pointer;
+    color: grey;
+}
+.playlist_search i:hover{
+    color: white;
+}
+#cross_hide_search_internal{
+    display: flex;
+    column-gap: 50vw;
+    margin: 28px 15px 35px 40px;
+}
+
+/* Search song */
+.search_songdisplay{
+    width: 75vw;
+    overflow-y: scroll;
+    height: 220px;
+    margin-left: 50px;
+}
+.search_songdisplay::-webkit-scrollbar{
+    scrollbar-gutter: stable;
+    width: 10px;
+}
+.search_songdisplay::-webkit-scrollbar-thumb{
+    background-color:slategray;
+}
+.table_playlist_search{
+    text-align: left;
+    width: 100%;
+    font-size: 13px;
+    padding: 0px 2px 5px 2px;
+    color: rgb(173, 173, 173);
+}
+
+/* bttn */
+.add_bttn{
+    background-color: transparent;
+    color: white;
+    padding: 7px;
+    font-weight: bold;
+    border: 1px solid white;
+    border-radius: 17px;
+    cursor: pointer;
+}
+.add_bttn:hover{
+    color: black;
+    background-color: white;
+}

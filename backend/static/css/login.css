@@ -1,0 +1,119 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.login_bg {
+  background-image: url("fvr.jpg");
+  background-size: cover;
+  opacity: 60%;
+  height: 100vh;
+  width: 100vw;
+}
+.login_pannel {
+  position: absolute;
+  top: 30%;
+  left: 37%;
+  right: 34%;
+  padding: 30px;
+  background-image: linear-gradient(210deg,rgb(29, 255, 236),rgb(43, 43, 43));
+  border-radius: 12px;
+}
+
+.login_pannel h2{
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 28px;
+    position: relative;
+    left: 27%;
+    right: 27%;
+    margin-bottom: 25px;
+}
+
+#login{
+    background-color: transparent;
+    font-size: 15px;
+    margin-top: 24px;
+    margin-left: 28%;
+    padding: 5px 9px 5px 9px;
+    border-radius: 5px;
+    background-color: rgb(255, 37, 37);
+    color: white;
+    border: 2px solid rgb(255, 37, 37);
+    cursor: pointer;
+}
+#signup{
+  background-color: transparent;
+  font-size: 15px;
+  margin-top: 24px;
+  margin-left: 15px;
+  padding: 5px 9px 5px 9px;
+  border-radius: 5px;
+  background-color: rgb(44, 37, 255);
+  color: white;
+  border: 2px solid rgb(44, 37, 255);
+  cursor: pointer;
+}
+
+.input_holder {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.input_holder input{
+    border: 0;
+    border-radius: 12px;
+    padding-left: 15px;
+    width: 95%;
+    height: 36px;
+}
+
+/* Message display */
+.messages{
+  width: 100%;
+  position: absolute;
+  font-weight: bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  z-index: 2;
+  top: 0;
+}
+#message{
+  width: 100%;
+  text-align: center;
+  padding: 4px 0px 4px 0px;
+  color: white;
+}
+.error{
+  background-color: red;
+}
+.success{
+  background-color:  rgb(44, 192, 44);
+}
+
+@media screen and (max-width: 1077px) {
+  .login_pannel{
+    left: 25%;
+    right: 25%;
+  }
+}
+@media screen and (max-width: 731px) {
+  .login_pannel{
+    left: 15%;
+    right: 15%;
+  }
+  .login_pannel h2{
+    font-size: 22px;
+    left: 25%;
+    right: 25%;
+  }
+}
+@media screen and (max-width: 502px) {
+  .login_pannel h2{
+    left: 15%;
+    right: 15%;
+  }
+  #login{
+    margin-left: 20%;
+  }
+}

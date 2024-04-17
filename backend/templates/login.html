@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify CLone Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" type="text/css"/>
+  </head>
+  <body>
+    <div class="login_bg"></div>
+    <div class="messages">
+      {% for message in messages %}
+      <div class="{{message.tags}}" id="message">{{message}}</div>
+      {% endfor %}
+    </div>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <div class="login_pannel">
+        <h2>User Login</h2>
+        <div class="input_holder">
+          <input type="text" placeholder="Username" name="username" />
+          <input type="password" placeholder="Password" name="password" />
+        </div>
+        <input type="submit" value="Login" id="login" />
+        <a href="/user/signup"
+          ><input type="button" value="Sign In" id="signup"
+        /></a>
+      </div>
+    </form>
+    <script>
+      let k = document.getElementById("message");
+      try{
+      setTimeout(() => {
+        k.style.display = "none";
+      }, 2000);
+    }catch{}
+    </script>
+  </body>
+</html>

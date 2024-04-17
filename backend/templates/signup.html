@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify Clone Signup</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
+  </head>
+  <body>
+    <div class="signup_bg"></div>
+    <div class="messages_signup">
+      {% for message in messages %}
+      <div class="{{message.tags}}" id="message_signup">{{message}}</div>
+      {% endfor %}
+    </div>
+    <form action="" method="POST" id="signup_form">
+      {% csrf_token %}
+      <div class="signup_pannel">
+        <h2>Let's start the musical journey !!</h2>
+        <div class="input_holder_signup">
+          <div class="names">
+            <input type="text" name="fname" placeholder="First Name" />
+            <input type="text" name="lname" placeholder="Last Name" />
+          </div>
+          <div class="names_error">
+            <div id="fname_error" class="error_message"></div>
+            <div id="lname_error" class="error_message"></div>
+          </div>
+          <div class="email">
+            <input type="text" name="email" placeholder="Email Address" />
+          </div>
+          <div id="email_error" class="error_message"></div>
+          <div class="info_signup">
+            <input
+              type="date"
+              name="dob"
+              style="padding-right: 10px;"
+            />
+            <input
+              type="text"
+              name="address"
+              placeholder="Address"
+            />
+            <input
+              type="text"
+              name="number"
+              placeholder="Mobile No"
+            />
+          </div>
+          <div id="no_error" class="error_message"></div>
+          <div class="login_info">
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter Password"
+            />
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              name="cpassword"
+            />
+          </div>
+          <div class="login_info_error">
+            <div id="pass_error" class="error_message"></div>
+            <div id="cpass_error" class="error_message"></div>
+          </div>
+        </div>
+        <input type="submit" value="Sign Up" id="signup" />
+      </div>
+    </form>
+
+    <script src="{% static 'js/signup.js' %}"></script>
+    <script>
+      let k = document.getElementById("message_signup");
+      try{
+      setTimeout(() => {
+        k.style.display = "none";
+      }, 2000);
+    }catch{}
+    </script>
+  </body>
+</html>
