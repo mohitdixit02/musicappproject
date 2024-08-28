@@ -4,6 +4,7 @@ import database from './Firebase/Firebase'
 import './CSS/Open.css'
 import conv from './service component/time_conv'
 import axios from 'axios'
+import {backend_url} from './service component/url_info';
 
 function OpenSonglist(props) {
     const song = props.songlist;
@@ -173,7 +174,7 @@ function OpenSonglist(props) {
                                         <tr key={index} id={element.id} className='songlist2_active' onClick={playsongtd}>
                                             <td style={{ 'textAlign': 'center', 'borderTopLeftRadius': '5px', 'borderBottomLeftRadius': '5px' }} id={`${element.id} index`} className='songtd index_class'>{index + 1}</td>
                                             <td id={element.id} style={{ 'display': 'flex' }} className='songtd'>
-                                                <img src={`${element.song_img}`} className='songtd_img' />
+                                                <img src={`${backend_url}${element.song_img}`} className='songtd_img' />
                                                 <div id={element.id} className='songtd_div'>
                                                     <span className='span_class' id={`${element.id} songname`}>{element.name}</span>
                                                     {element.artist}
@@ -215,7 +216,7 @@ function OpenSonglist(props) {
                                         <tr key={index} id={element.id} className='songlist2_active' onClick={playsongtd}>
                                             <td style={{ 'textAlign': 'center', 'borderTopLeftRadius': '5px', 'borderBottomLeftRadius': '5px' }} id={`${element.id} index`} className='songtd index_class'>{index + 1}</td>
                                             <td id={element.id} style={{ 'display': 'flex' }} className='songtd'>
-                                                <img src={`${element.song_img}`} className='songtd_img' />
+                                                <img src={`${backend_url}${element.song_img}`} className='songtd_img' />
                                                 <div id={element.id} className='songtd_div'>
                                                     <span className='span_class' id={`${element.id} songname`}>{element.name}</span>
                                                     {element.artist}
@@ -233,6 +234,8 @@ function OpenSonglist(props) {
                 </div>
             )
         }
+        default:
+            return <></>
     }
 }
 

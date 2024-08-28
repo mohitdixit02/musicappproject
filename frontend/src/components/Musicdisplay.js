@@ -14,12 +14,12 @@ function Musicdisplay(props) {
 
     return (
         <>
-            <div className='audio_display' style={{ 'backgroundImage': `url(${data['song_img']})` }}>
+            <div className='audio_display' style={{ 'backgroundImage': `url(${backend_url+data['song_img']})` }}>
             </div>
             <i className="bi bi-chevron-down" id='ad_back_arrow' onClick={() => navg(-1)}></i>
             <div className="audio_info">
                 <div className="audio_info_content_holder">
-                    <img src={data['song_img']} />
+                    <img src={backend_url+data['song_img']} />
                     <div className='ad_text_div'>
                         <span className='ad_text_name'>{data['name']}</span>
                         <span className='ad_text_artist'>{data['artist']}</span>

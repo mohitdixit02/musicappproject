@@ -5,6 +5,7 @@ import p from './media/playicon.jpg'
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import { GetSong, GetArtist, GetArtistinfo, GetAlbuminfo, GetMusicinfo, GetCategory } from './service component/server_request_functions';
+import { backend_url } from './service component/url_info.js';
 
 const Main = (props) => {
     let trackfn = props.trackfn;
@@ -234,7 +235,7 @@ const Main = (props) => {
                                                 <div key={song_key.id} className='cover_box'>
                                                     <div className="genbox">
                                                         <div>
-                                                            <img src={`${song_key.song_img}`} alt="Image" className="genbox_img" />
+                                                            <img src={`${backend_url}${song_key.song_img}`} alt="Image" className="genbox_img" />
                                                         </div>
                                                         <div className="genbox_text1">
                                                             {song_key.name}
@@ -269,7 +270,7 @@ const Main = (props) => {
                                     <div key={temp.id} className='cover_box' >
                                         <div className="genbox">
                                             <div>
-                                                <img src={`${temp.artist_img}`} alt="Image" className="genbox_img artist" />
+                                                <img src={`${backend_url}${temp.artist_img}`} alt="Image" className="genbox_img artist" />
                                             </div>
                                             <div className="genbox_text1 artisttext">
                                                 {temp.name}

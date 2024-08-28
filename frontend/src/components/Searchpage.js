@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { ref, set, onValue, remove } from "firebase/database"
 import database from './Firebase/Firebase'
 import { GetMusicinfo, GetArtistinfo, GetAlbuminfo, GetCategory } from './service component/server_request_functions';
+import { backend_url} from './service component/url_info';
 
 function Searchpage(props) {
   const navigate = useNavigate();
@@ -127,7 +128,7 @@ function Searchpage(props) {
   useEffect(() => {
     if (value != '') {
       try {
-        axios.get(`/req_data/search/${value}`).then((response) => {
+        axios.get(`${backend_url}/req_data/search/${value}`).then((response) => {
           setSong(response.data['song']);
 
           const artist_data = response.data['artist'];
@@ -353,7 +354,7 @@ function Searchpage(props) {
                             <div key={top_key.id} className='searchcover_box'>
                               <div className="search_genbox">
                                 <div>
-                                  <img src={`${top_key.song_img}`} alt="Image" className="searchresult_img" />
+                                  <img src={`${backend_url}${top_key.song_img}`} alt="Image" className="searchresult_img" />
                                 </div>
                                 <div className="searchresult_text1">
                                   {top_key.name}
@@ -374,7 +375,7 @@ function Searchpage(props) {
                           <div key={top_key.id} className='searchcover_box'>
                             <div className="search_genbox">
                               <div>
-                                <img src={`${top_key.artist_img}`} alt="Image" className="searchresult_img" />
+                                <img src={`${backend_url}${top_key.artist_img}`} alt="Image" className="searchresult_img" />
                               </div>
                               <div className="searchresult_text1">
                                 {top_key.name}
@@ -394,7 +395,7 @@ function Searchpage(props) {
                           <div key={top_key.id} className='searchcover_box'>
                             <div className="search_genbox">
                               <div>
-                                <img src={`${top_key.song_img}`} alt="Image" className="searchresult_img" />
+                                <img src={`${backend_url}${top_key.song_img}`} alt="Image" className="searchresult_img" />
                               </div>
                               <div className="searchresult_text1">
                                 {top_key.album}
@@ -428,7 +429,7 @@ function Searchpage(props) {
                           <tr id={song.id} key={index} className='songlist_search_active' onClick={playsongtd}>
                             <td style={{ 'textAlign': 'center', 'borderTopLeftRadius': '5px', 'borderBottomLeftRadius': '5px', 'width': '7%' }} className='songtd index_class' id={`${song.id} index`}>{index + 1}</td>
                             <td id={song.id} style={{ 'display': 'flex' }} className='songtd search_impinfo'>
-                              <img src={`${song.song_img}`} className='songtdsearch_img' />
+                              <img src={`${backend_url}${song.song_img}`} className='songtdsearch_img' />
                               <div id={song.id} className='songtdsearch_div'>
                                 <span className='spansearch_class' id={`${song.id} name`}>{song.name}</span>
                                 {song.artist}
@@ -459,7 +460,7 @@ function Searchpage(props) {
                             <div key={artist_key.id} className='artist_cover_box' >
                               <div className="genbox_search">
                                 <div>
-                                  <img src={`${artist_key.artist_img}`} alt="Image" className="searchresult_img artist" />
+                                  <img src={`${backend_url}${artist_key.artist_img}`} alt="Image" className="searchresult_img artist" />
                                 </div>
                                 <div className="searchresult_text1 artisttext">
                                   {artist_key.name}
@@ -488,7 +489,7 @@ function Searchpage(props) {
                       <div key={album_key.id} className='artist_cover_box' >
                         <div className="genbox_search">
                           <div>
-                            <img src={`${album_key.song_img}`} alt="Image" className="searchresult_img albumimg" />
+                            <img src={`${backend_url}${album_key.song_img}`} alt="Image" className="searchresult_img albumimg" />
                           </div>
                           <div className="searchresult_album_main">
                             {album_key.album}

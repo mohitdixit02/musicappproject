@@ -5,6 +5,7 @@ import database from './Firebase/Firebase'
 import conv from './service component/time_conv'
 import axios from 'axios';
 import './CSS/Showtrack.css';
+import {backend_url} from "./service component/url_info";
 
 function Showtracks(props) {
     let location = useLocation();
@@ -116,7 +117,7 @@ function Showtracks(props) {
                                     <tr key={index} id={element.id} className='songlist2_active' onClick={playsongtd}>
                                         <td style={{ 'textAlign': 'center', 'borderTopLeftRadius': '5px', 'borderBottomLeftRadius': '5px', 'width': '20%', 'textAlign': 'center' }} id={`${element.id} index`} className='songtd index_class'>{index + 1}</td>
                                         <td id={element.id} style={{ 'display': 'flex', 'width': '50vw' }} className='songtd'>
-                                            <img src={`${element.song_img}`} className='songtd_img' />
+                                            <img src={`${backend_url}${element.song_img}`} className='songtd_img' />
                                             <div id={element.id} className='songtd_div'>
                                                 <span className='span_class' id={`${element.id} name`}>{element.name}</span>
                                                 {element.artist}

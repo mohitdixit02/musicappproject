@@ -3,6 +3,7 @@ import p from './media/playicon.jpg'
 import tick from './media/tick.jpg'
 import { useLocation } from 'react-router-dom'
 import OpenSonglist from './OpenSonglist'
+import { backend_url } from './service component/url_info'
 
 const Open = (props) => {
     const location = useLocation();
@@ -30,7 +31,7 @@ const Open = (props) => {
                     'backgroundImage': `url(${temp.song_img})`,
                 }}></div>
                     <div className='open_top_heading'>
-                        <img className='open_top_heading_img' src={`${temp.song_img}`}/>
+                        <img className='open_top_heading_img' src={`${backend_url}${temp.song_img}`}/>
                         <div className='heading_text'>
                             <ul type='none'>
                                 <li style={{ 'marginLeft': '6px' }}>{temp.album}</li>
@@ -72,7 +73,7 @@ const Open = (props) => {
                     'backgroundImage': `url(${artist_info.about_img})`
                     }}></div>
                     <div className='open_top_heading'>
-                        <img className='open_top_heading_img_artist' src={`${artist_info.artist_img}`} style={{
+                        <img className='open_top_heading_img_artist' src={`${backend_url}${artist_info.artist_img}`} style={{
                             'borderRadius': '300px'
                         }} />
                         <div className='heading_text' style={{ 'paddingTop': '28px' }}>
@@ -97,7 +98,7 @@ const Open = (props) => {
                         <br />
                         <div className="aboutflex">
                             <div style={{ 'height': '500px', 'width': '97%', 'overflow': 'hidden' }}>
-                                <img src={`${artist_info.about_img}`} className='aboutimg' />
+                                <img src={`${backend_url}${artist_info.about_img}`} className='aboutimg' />
                             </div>
                             <div className='aboutinfo'>
                                 <div style={{ 'fontSize': '22px', 'fontWeight': 'bold' }}>{listn} Monthly Listeners</div> <br /> <br />
@@ -143,7 +144,7 @@ const Open = (props) => {
                     'backgroundImage': `url(${temp.song_img})`,
                     }}></div>
                     <div className='open_top_heading'>
-                        <img className='open_top_heading_img' src={`${temp.song_img}`} />
+                        <img className='open_top_heading_img' src={`${backend_url}${temp.song_img}`} />
                         <div className='heading_text'>
                             <ul type='none'>
                                 <li style={{ 'marginLeft': '6px' }}>Album</li>

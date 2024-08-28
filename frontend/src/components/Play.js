@@ -169,7 +169,7 @@ export default function Play(props) {
     <div className='play'>
       <Link to='/audiodisplay' style={{'textDecoration':'none'}}>
       <div className="left">
-        <img src={`${current_track.song_img}`} id='playsong_img' />
+        <img src={`${backend_url}${current_track.song_img}`} id='playsong_img' />
         <div id='playtext'>{current_track.name}<br /> <span id='artist'>{current_track.artist}</span></div>
       </div></Link>
       <Audiocontrols isPlaying={isPlaying} isPlayingstate={setPlaystate} song={song_current} index={index} setIndex={setIndex} track={tracklist} progress={trackprogress} ctrack={current_track} SetProgress={SetProgress} duration={duration.current} original_duration={durn} repeat={repeat} setrepeat={setRepeat} />

@@ -8,7 +8,7 @@ import axios from 'axios';
 import database from '../Firebase/Firebase'
 import { ref, set } from 'firebase/database'
 import OpenSonglist from '../OpenSonglist'
-import {backend_url} from '../service component/url_info'
+import {backend_url} from '../service component/url_info';
 
 function Playlist(props) {
     //Playlist Owner
@@ -225,7 +225,7 @@ function Playlist(props) {
                                             <tr id={song.id} key={'search_' + song.name} className='songlist_search_active'>
                                                 <td style={{ 'textAlign': 'center', 'borderTopLeftRadius': '5px', 'borderBottomLeftRadius': '5px', 'width': '7%' }} className='songtd index_class' id={`${song.id} index`}>{index + 1}</td>
                                                 <td id={song.id} style={{ 'display': 'flex', 'width': '95%' }} className='songtd'>
-                                                    <img src={`${song.song_img}`} className='songtdsearch_img' />
+                                                    <img src={`${backend_url}${song.song_img}`} className='songtdsearch_img' />
                                                     <div id={song.id} className='songtdsearch_div'>
                                                         <span className='spansearch_class' id={`${song.id} name`}>{song.name}</span>
                                                         {song.artist}

@@ -8,6 +8,7 @@ import conv from './service component/time_conv'
 import './CSS/Catgdisplay.css'
 import './CSS/main.css'
 import { GetArtistinfo } from './service component/server_request_functions';
+import { backend_url } from './service component/url_info';
 
 function Catgdisplay(props) {
     let location = useLocation();
@@ -113,7 +114,7 @@ function Catgdisplay(props) {
                                     <tr key={index} id={element.id} className='songlist2_active' onClick={playsongtd}>
                                         <td style={{ 'textAlign': 'center', 'borderTopLeftRadius': '5px', 'borderBottomLeftRadius': '5px', 'width': '15%', 'textAlign': 'center' }} id={`${element.id} index`} className='songtd index_class'>{index + 1}</td>
                                         <td id={element.id} style={{ 'display': 'flex', 'width': '50vw' }} className='songtd'>
-                                            <img src={`${element.song_img}`} className='songtd_img' />
+                                            <img src={`${backend_url}${element.song_img}`} className='songtd_img' />
                                             <div id={element.id} className='songtd_div'>
                                                 <span className='span_class' id={`${element.id} name`}>{element.name}</span>
                                                 {element.artist}
@@ -200,7 +201,7 @@ function Catgdisplay(props) {
                                                     <div key={temp.id} className='cover_box' >
                                                         <div className="genbox">
                                                             <div>
-                                                                <img src={`${temp.artist_img}`} alt="Image" className="genbox_img artist" />
+                                                                <img src={`${backend_url}${temp.artist_img}`} alt="Image" className="genbox_img artist" />
                                                             </div>
                                                             <div className="genbox_text1 artisttext">
                                                                 {temp.name}
