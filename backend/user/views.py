@@ -39,7 +39,7 @@ def login_user(request):
                 {
                     "code":"success",
                     "user_id": username,
-                    "first_name": "User",
+                    "first_name": user.first_name,
                     "message": "Login Successful"
                 }
             )
