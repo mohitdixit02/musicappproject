@@ -152,7 +152,7 @@ import firebase_admin
 from firebase_admin import credentials
 
 # Path to the Firebase Admin SDK key file you downloaded earlier
-FIREBASE_CONFIG_PATH = os.path.join(BASE_DIR,'data_key/spotify-clone-ceacf-firebase-adminsdk-fl5am-4be608bd32.json')
+FIREBASE_CONFIG_PATH = os.path.join(BASE_DIR,'data_key','spotify-clone-ceacf-firebase-adminsdk-fl5am-4be608bd32.json')
 
 # Initialize Firebase with the service account
 cred = credentials.Certificate(FIREBASE_CONFIG_PATH)
