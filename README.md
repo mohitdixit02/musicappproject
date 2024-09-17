@@ -81,6 +81,8 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
+<h3>Dev Server</h3>
+
 In case you want to start the dev server of frontend, open another terminal and run the following commands:
 
 ```bash
@@ -89,10 +91,11 @@ npm install
 npm start
 ```
 
+!! Remember to modify the .env in frontend code to match the backend server with dev server or else it will not work.
+
 <h2>Suggestions</h2>
 I am happy for any suggestions or improvements. Feel free to open an issue or pull request.
 or you can email me on: mohit.vsht@gmail.com
 
 Thanks !!
-
-<h3>Author: Mohit Sharma</h3>
+Mohit Sharma
