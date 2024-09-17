@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-)f(0t40_3#8u_q7t8i4b+ld5mypy)r%is%9_8&te77v9b6c7de
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "mohitvsht02.pythonanywhere.com"
+    "mohitvsht02.pythonanywhere.com",
+    "127.0.0.1",
 ]
 
 
@@ -51,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -149,3 +150,16 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://musicappproject-gold.vercel.app"
 ]
+
+# firebase cloud storage
+import firebase_admin
+from firebase_admin import credentials
+
+# Path to the Firebase Admin SDK key file you downloaded earlier
+FIREBASE_CONFIG_PATH = os.path.join(BASE_DIR,'data_key\\spotify-clone-ceacf-firebase-adminsdk-fl5am-4be608bd32.json')
+
+# Initialize Firebase with the service account
+cred = credentials.Certificate(FIREBASE_CONFIG_PATH)
+firebase_admin.initialize_app(cred, {
+    'storageBucket': 'spotify-clone-ceacf.appspot.com',
+})

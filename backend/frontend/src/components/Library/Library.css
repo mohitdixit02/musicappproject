@@ -1,0 +1,96 @@
+.Library_main{
+    width: 94vw;
+    height: 81.2vh;
+    overflow-y: scroll ;
+    background-color: rgba(21, 21, 32, 0.541);
+}
+.Library_main::-webkit-scrollbar{
+    scrollbar-gutter: stable;
+    width: 10px;
+}
+.Library_main::-webkit-scrollbar-thumb{
+    background-color:slategray;
+}
+
+/* Logout */
+#lib_text1{
+    position: absolute;
+    top: 30vh;
+    left: 27vw;
+    color: white;
+    font-size: 45px;
+    font-weight: bolder;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#lib_text2{
+    position: relative;
+    text-align: center;
+    top: 10px;
+    color: rgb(188, 182, 246);
+    font-size: 16px;
+    font-weight: bolder;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Library Content */
+.library_display{
+    color: white;
+    padding: 18px 40px;
+}
+.icon_holder_liked_library{
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    background-image: linear-gradient(180deg,rgb(245, 89, 89),rgb(169, 169, 255));
+    position: relative;
+    cursor: pointer;
+}
+.icon_holder_liked_library i{
+    position: absolute;
+    font-size: 40px;
+    top: 40%;
+    left: 41%;
+}
+.txt_liked_songs_library{
+    width: 200px;
+    text-align: center;
+    margin-top: 7.5px;
+    font-size: 18px;
+}
+
+@media screen and (max-width: 895px) {
+    .Library_main{
+        width: 100%;
+    }
+    #lib_text1{
+        left: 30%;
+    }
+}
+@media screen and (max-width: 710px) {
+    #lib_text1{
+        left: 25%;
+    }
+    .icon_holder_liked_library{
+        height: 150px;
+        width: 150px;
+    }
+    .icon_holder_liked_library i{
+        font-size: 31px;
+    }
+    .txt_liked_songs_library{
+        width: 150px;
+    }
+    .library_display{
+        padding-left: 20px;
+    }
+}
+@media screen and (max-width: 530px) {
+    #lib_text1{
+        left: 15%;
+        font-size: 32px;
+    }
+    #lib_text2{
+        font-size: 15px;
+        left: -4%;
+    }
+}

@@ -7,21 +7,48 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+import json
 from .serializers import OnlyNameserializer, Userserializer
 
-
+@api_view(['POST'])
 def login_user(request):
-    username = request.POST.get('username')
+    data = json.loads(request.body.decode('utf-8'))
+    username = data['username']
+
     if username is not None:
-        login_password = request.POST.get('password')
+        login_password = data['password']
         user = authenticate(request, username=username, password=login_password)
 
         if user is not None:
+            if user.is_authenticated:
+                return Response({
+                    "user_id": username,
+                    "first_name": user.first_name,
+                    "message": "Already Logged In"
+                })
+
             login(request, user)
-            return redirect('/')
+            print("User Logged In")
+            return Response(
+                {
+                    "user_id": username,
+                    "first_name": "User",
+                    "message": "Login Successful"
+                }
+            )
         else:
-            messages.error(request, "Invalid Username or Password")
-    return render(request, 'login.html')
+            return Response(
+                {
+                    "user_id": "none",
+                    "first_name": "User",
+                    "message": "Invalid Credentials"
+                }
+            )
+    return Response({
+        "user_id": "none",
+        "first_name": "User",
+        "message": "Invalid Credentials"
+    })
 
 
 def signup(request):
@@ -64,12 +91,6 @@ def getUser(request):
                 "first_name": "User"
             }
         ])
-        # return Response([
-        #     {
-        #         "user_id": "mohit_vsht",
-        #         "first_name": "Mohit"
-        #     }
-        # ])
 
 
 @api_view(['GET'])

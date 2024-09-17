@@ -1,0 +1,177 @@
+/* Nav Bar */
+.nav{
+    z-index: 3;
+    position: sticky;
+    color: lightgray;
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    padding: 1.2% 2% 1.2% 3%;
+}
+
+/* Left Buttons */
+.left_nav{
+    display: flex;
+}
+.bttn_nav{
+    display: flex;
+    column-gap: 12px;
+}
+.bttn_nav i{
+    padding-right: 6px;
+    font-size: 24px;
+    font-weight: bolder;
+    color: white;
+    cursor: pointer;
+}
+
+/* User CSS */
+.user{
+    color: white;
+    display: flex;
+    justify-content: center;
+    column-gap: 15px;
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.user i{
+    font-size: 24px;
+}
+.user i:hover{
+    color: rgb(0, 132, 255);
+}
+.user button{
+    border: 2px solid rgb(0, 132, 255);
+    color: white;
+    border-radius: 12px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 5px 24px;
+    cursor: pointer;
+    background-color: rgb(0, 132, 255);
+}
+.user button:hover{
+    background-color: rgb(0, 118, 229);
+    border-color:rgb(0, 118, 229);
+
+}
+/* .bi-person-circle{
+    font-size: 20.5px;
+}
+.bi-caret-down-fill{
+    font-size: 17px;
+}
+.user_options{
+    z-index: 3;
+    display: none;
+    position: absolute;
+    right: 15px;
+    top: 60px;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} */
+.user span{
+    font-size: 16px;
+}
+.user_opt_list{
+    width: 180px;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    right: 1px;
+    background-color:  rgb(50, 47, 69);
+    padding: 8px 10px 8px 10px;
+}
+.user_opt_list li{
+    padding: 8px 0px 8px 10px;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 4px;
+}
+.user_opt_list a{
+    text-decoration: none;
+    color: white;
+}
+.user_opt_list li:hover{
+    background-color: rgb(34, 32, 49);
+}
+.user_opt_list hr{
+    background-color: rgb(105, 105, 105);
+    border: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 1px;
+}
+
+/* Serach Bar Area */
+.search_bar{
+    border: 1px solid rgba(18, 18, 18, 0.671);
+    background-color: rgba(41, 41, 50, 0.345);
+    border-radius: 30px;
+    width: 350px;
+    height: 40px;
+    position: absolute;
+    top: 9.5px;
+    left: 10%;
+}
+.search_bar i{
+    position: absolute;
+    top: 7px;
+    left: 12px;
+    font-size: 20px;
+    color: rgb(212, 212, 212);
+}
+.search_bar input{
+    border: 0;
+    background-color: transparent;
+    font-size: 14px;
+    padding-left: 55px;
+    height: 40px;
+    color: white;
+}
+.search_bar input:focus{
+    outline: none;
+    color: white;
+}
+
+@media screen and (max-width : 700px) {
+    .search_bar input{
+        width: 220px;
+        padding-left: 40px;
+    }
+}
+
+@media screen and (max-width : 520px) {
+    .left_nav{
+        margin-left: 2%;
+        column-gap: 0.2vw;
+    }
+    .search_bar input{
+        width: 175px;
+        margin-top: 1px;
+        height: 28px;
+        padding-left: 25px;
+        font-size: 11px;
+        background-size: 13%;
+    }
+    .bttn_nav i{
+        font-size: 18px;
+    }
+    .bttn_nav{
+        column-gap: 2px;
+    }
+    .user{
+        top: 18px;
+        column-gap: 7px;
+        padding: 0px 4px 0px 5px;
+        right: 8px;
+    }
+    .bi-person-circle{
+        font-size: 17.5px;
+    }
+    .bi-caret-down-fill{
+        font-size: 12px;
+    }
+    .user span{
+        font-size: 13px;
+    }
+}

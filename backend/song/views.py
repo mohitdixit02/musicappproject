@@ -5,6 +5,9 @@ from .models import Artist
 from .serializers import Itemserializer
 from .serializers import Artistserializer
 import mutagen
+from mutagen.mp3 import MP3
+from django.core.files import File
+import os
 
 @api_view(['GET'])
 def getData(request):
@@ -40,14 +43,13 @@ def audio(request, songid):
 def artist(request):
     artist_data = []
 
-
     # Adding duration automatically to songs
-    songdata = Song.objects.all()
-    for item in songdata:
-            if(item.duration==0):
-                audio_info = mutagen.File(item.song_source).info
-                item.duration = audio_info.length
-                item.save()
+    # songdata = Song.objects.all()
+    # for item in songdata:
+    #         if(item.duration==0):
+    #             audio_info = MP3(item.firebase_mp3_url)
+    #             item.duration = audio_info.info.length
+    #             item.save()
 
     # generating array of artists
     artist_names = Song.objects.values('artist')
@@ -155,3 +157,41 @@ def category(request,catg):
         'list':serlz.data
     }
     return Response(Response_array)
+
+
+@api_view(['GET'])
+def test_upload(request):
+    song_list_query=Song.objects.all()
+    serlz = Itemserializer(song_list_query,many=True)
+    # for i in serlz.data:
+    #     new_obj = Song(
+    #     name = i['name'],
+    #     artist = i['artist'],
+    #     album = i['album'],
+    #     genere = i['genere'],
+    #     plays = i['plays'],
+    # )
+    i = serlz.data[0]
+    print(i)
+    new_obj = Song(
+        name = i['name'],
+        artist = i['artist'],
+        album = i['album'],
+        genere = i['genere'],
+        plays = i['plays'],
+    )
+
+    # mp3_file_path = os.path.join('media/song/media')
+    # print(mp3_file_path)
+
+    # # Open the MP3 file in binary mode
+    # with open(mp3_file_path, 'rb') as f:
+    #     django_file = File(f)
+
+    #     # Assign the file to the mp3_file field
+    #     new_media.mp3_file.save(os.path.basename(mp3_file_path), django_file)
+
+    #     # Save the model instance
+    #     new_media.save()
+    
+    return Response("Start")

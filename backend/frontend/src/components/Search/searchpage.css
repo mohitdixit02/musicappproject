@@ -1,0 +1,440 @@
+.search_main{
+    background-color: rgba(21, 21, 32, 0.541);
+    height: 91.4%;
+    width: 75.2vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.search_main::-webkit-scrollbar{
+    scrollbar-gutter: stable;
+    width: 10px;
+}
+.search_main::-webkit-scrollbar-thumb{
+    background-color:slategray;
+}
+
+/* Null result CSS */
+#entertosearch{
+    font-size: 25px;
+    font-weight: bolder;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    position: relative;
+    top: 9vh;
+    font-style: italic;
+    margin-left: 400px;
+}
+#loading{
+    color:white;
+    font-weight: bold;
+    font-size:30px ;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loading div{
+    position: relative;
+}
+
+#loading span{
+    color: rgb(117, 117, 255);
+}
+
+.bi-headphones{
+    position: absolute;
+    top: -44px;
+    left: -34px;
+    transform: rotateZ(-20deg);
+    font-size: 50px;
+    color: rgb(117, 117, 255);
+}
+
+.searchresult{
+    color: white;
+    font-size: 20px;
+    min-height: 17vh;
+    padding-bottom: 180px;
+    width: calc(74vw - 30px);
+    margin-left: 30px;
+    padding-top: 15px;
+}
+
+/* Categories CSS */
+.categories{
+    position: relative;
+    top:10px;
+    color: rgb(223, 223, 223);
+    font-family: Arial, Helvetica, sans-serif;
+}
+.categories span{
+    font-size: x-large ;
+    font-weight: bolder;
+    position: relative;
+    top: 25px;
+    padding-left: 40px;
+}
+.catgflex{
+    position: relative;
+    top:45px;
+    display: flex;
+    column-gap: 18px;
+    margin-left: 30px;
+}
+.catg{
+    font-weight: bold;
+    height: 200px;
+    width: 200px;
+    text-align: center;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.catg span{
+    font-size: 20px;
+    position: relative;
+    top: 85px;
+    right: 15px;
+}
+
+/* CSS for result on search */
+.upsearch{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 17px;
+    padding: 0px 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+/* Song CSS */
+#songlist_maindiv{
+    width: 100%;
+}
+.songsearch_list{
+    margin-top: 15px;
+    background-color: rgba(29, 29, 41, 0.884);
+    width: 100%;
+    overflow-y: scroll;
+    border-radius: 7px;
+    max-height: 300px;
+}
+.songsearch_list h3{
+    padding-left: 12px;
+}
+.songsearch_list::-webkit-scrollbar{
+    scrollbar-gutter: stable;
+    width: 10px;
+}
+.songsearch_list::-webkit-scrollbar-thumb{
+    background-color:slategray;
+}
+.listtablesearch{
+    padding: 10px 7px;
+    text-align: left;
+    width: 100%;
+    font-size: 13px;
+}
+.songtd_search{
+    margin-bottom: 5px;
+}
+.spansearch_class{
+    margin-bottom: 3px;
+    color: white;
+    font-size: 15px;
+    font-weight: bolder;
+}
+.songtdsearch_img{
+    padding-top: 8px;
+    height: 42px;
+    width: 42px;
+}
+.songtdsearch_div{
+    font-size: 12px;
+    padding:12px 2px 2px 15px;
+    position: relative;
+    bottom: 5px;
+    display: flex;
+    flex-direction: column;
+}
+.songlist_search_active:hover{
+    cursor: pointer;
+    font-weight: bold;
+    color: rgb(218, 211, 241);
+    background-color: rgb(88, 87, 102);
+}
+.search_impinfo{
+    width: 65%;
+}
+
+/* Animated Class */
+.activenow{
+    color:rgb(255, 155, 155);
+}
+.activenow_class{
+    color:rgb(255, 155, 155);
+    margin-bottom: 3px;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+
+/* Top Result CSS */
+.search_genbox{
+    margin-top: 14px;
+    padding: 15px;
+    border-radius: 7px;
+    height: 100%;
+    width: 97%;
+    display: flex;
+    background-color: rgba(29, 29, 41, 0.884);
+}
+.searchresult_img{
+    border-radius: 7px;
+    height: 140px;
+    width: 140px;
+}
+.searchresult_text1{
+    font-size: 30px;
+    font-weight: bolder;
+    position: relative;
+    padding: 0px 3px 5px 15px;
+}
+.searchresult_text2{
+    position: relative;
+    color: lightgrey;
+    font-size: 14px;
+    padding: 0px 3px 5px 17px;
+}
+.searchcover_box{
+    position: relative;
+}
+.searchmusic_cover{
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    background-color: none;
+    border-radius: 7px;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+.playicon_design_search{
+    display: none;
+    opacity: 0;
+    height: 55px;
+    width: 55px;
+    color: black;
+    z-index: 3;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    transform: translateY(10px);
+}
+/* Animate play icon */
+.animateicon{
+    animation: moveup 0.4s both;
+}
+@keyframes moveup {
+    0%{
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px)
+    }
+}
+
+/* Artist CSS */
+.artist{
+    border-radius: 120px;
+    height: 160px;
+    width: 160px;
+}
+.artisttext{
+    font-size: 18px;
+}
+.cover_box{
+    position: relative;
+    left: 5px;
+}
+.search_artist_cover{
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    background-color: none;
+    border-radius: 7px;
+    height: 270px;
+    width: 204px;
+    cursor: pointer;
+}
+.artist_cover_box{
+    position: relative;
+    left: 5px;
+}
+.heading_search{
+    margin-top: 32px;
+    margin-left: 22px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.genbox_search{
+    padding: 15px;
+    border-radius: 7px;
+    height: 240px;
+    width: 172px;
+}
+.genbox_flex_search{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0px;
+    text-align: center;
+}
+.genbox_flex_search::-webkit-scrollbar{
+    display: none;
+}
+.search_artist_col_flex{
+    display: flex;
+    column-gap: 13px;
+    overflow-x: hidden;
+    padding-right: 15px;
+}
+
+/* Album */
+.albumimg{
+    height: 170px;
+    width: 170px;
+}
+.searchresult_album_main{
+    font-size: 18px;
+    margin-top: 9px;
+}
+.searchresult_album{
+    font-size: 12px;
+    color: lightgray;
+    margin-top: 10px;
+}
+
+/* heart icon */
+.bi-heart{
+    z-index: 2;
+}
+.bi-heart-fill{
+    z-index: 2;
+}
+
+
+/* CSS for full y
+ */
+@media screen and (min-height:790px){
+    .search_main{
+        height: 92%;
+    }
+}
+
+@media screen and (max-width : 1411px) {
+    #songlist_maindiv{
+        width: 55%;
+    }
+    .search_genbox{
+        width: 300px;
+    }
+    .searchresult_text1{
+        font-size: 22px;
+    }
+    .searchresult{
+        width: 95%;
+        margin: 0% 5%;
+    }    
+}
+@media screen and (max-width : 1215px) {
+    .upsearch{
+        flex-direction: column;
+        padding: 0;
+        row-gap: 35px
+    }
+    #songlist_maindiv{
+        padding-left: 0;
+        width: 90%;
+    }
+}
+@media screen and (max-width : 1110px) {
+    .catg{
+        height: 160px;
+        width: 160px;
+    }
+    .catg span{
+        font-size: 18px;
+        top: 65px;
+        right: 17px;
+    }
+}
+
+@media screen and (max-width : 912px) {
+    .catgflex{
+        flex-direction: column;
+        row-gap: 18px;
+        width: 90%;
+    }
+    .catg{
+        height: 80px;
+        width: 100%;
+    }
+    .catg span{
+        font-size: 17px;
+        top: 28px;
+        right: 17px;
+    }
+}
+
+@media screen and (max-width : 895px) {
+    .search_main{
+        height: 100vh;
+        width: 100vw;
+    }
+    .catgflex{
+        margin-left: 3%;
+        width: 94%;
+    }
+    .searchresult_img{
+        height: 120px;
+        width: 120px;
+    }
+    .artist{
+        height: 130px;
+        width: 130px;
+    }
+    .searchresult_text1{
+        font-size: 18px;
+    }
+    .search_genbox{
+        column-gap: 0;
+    }
+    .search_artist_cover{
+        height: 230px;
+        width: 160px;
+    }
+    .genbox_search{
+        height: auto;
+        width: 140px;
+    }
+}
+
+@media screen and (max-width : 555px) {
+    .search_artist_col_flex{
+        column-gap: 10px;
+        margin-left: 0px;
+    }
+    .search_addtninfo{
+        display: none;
+    }
+    .search_impinfo{
+        width: 100%;
+    }
+    #songlist_maindiv{
+        width: 98%;
+    }
+}

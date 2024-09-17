@@ -10,4 +10,7 @@ urlpatterns = [
     path('album/<str:album>',views.album,name='album_data'),
     path('search/<str:index>',views.search,name='search'),
     path('catg/<str:catg>',views.category,name='catg'),
+
+
+    path('test_upload',views.test_upload,name='test'),
 ]

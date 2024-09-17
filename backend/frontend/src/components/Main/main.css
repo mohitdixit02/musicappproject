@@ -1,0 +1,391 @@
+/* Main */
+.main{
+    background-color: rgba(21, 21, 32, 0.541);
+    color: white;
+    overflow-y: scroll;
+    height: calc(100% - 65px);
+    width: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.main::-webkit-scrollbar{
+    background: transparent;
+    width: 10px;
+}
+.main::-webkit-scrollbar-thumb{
+    background-color:slategray;
+}
+#wish{
+    margin-top: 5px 0 10px 0;
+    font-size: 1.9rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Album */
+.album{
+    position: relative;
+    padding: 10px 20px 10px 45px;
+    color: white;
+}
+.albumflex_left{
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    font-size: 28px;
+    cursor: pointer;
+}
+.albumflex_right{
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.albumflex{
+    width: 100%;
+    overflow-x: scroll;
+    display: flex;
+    column-gap: 85px;
+}
+.albumflex::-webkit-scrollbar{
+    display: none;
+}
+.topbox{
+    width: 100%;
+}
+.topbox img{
+    width: 100%;
+    height: auto;
+}
+
+/* .topbox img{
+    width: 100%;
+    height: 22rem;
+    cursor: pointer;
+} */
+
+/* Genere Box */
+.genere_holder_main{
+    display: grid;
+    grid-template-columns: 49.5% 49.5%;
+    column-gap: 18px;
+    row-gap: 18px;
+}
+.genere_holder{
+    position: relative;
+}
+.genere_holder_1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rosybrown;
+    width: 100%;
+    height: 150px;
+    padding: 25px 0;
+    border-radius: 8px;
+    background-size: cover;
+    filter: brightness(60%) blur(2px);
+    cursor: pointer;
+}
+.genere_holder:hover .genere_holder_1{
+    filter: brightness(100%);
+}
+.genere_holder_2{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 42%;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* General Box */
+.heading{
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+.allopt{
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+}
+.heading_holder_main{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin:15px 2px;
+}
+.genbox{
+    height: 100%;
+    width: 100%;
+    font-family: 'Times New Roman', Times, serif;
+}
+.genbox_img{
+    border-radius: 4px;
+    height: 11.5rem;
+    width: 100%;
+}
+.genbox_text1{
+    text-align: center;
+    font-size: 1.1rem;
+    color: white;
+    font-weight: bolder;
+    position: relative;
+    padding: 5px 3px 5px 4px;
+}
+.genbox_text2{
+    text-align: center;
+    position: relative;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 400;
+    padding: 1px 3px 5px 6px;
+}
+.genbox_main{
+    padding: 10px 36px;
+    width: calc(100% - 72px);
+    height: auto;
+}
+.genbox_flex{
+    width: 100%;
+    padding-right: 20px;
+    display: flex;
+    justify-content: space-between;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.genbox_flex::-webkit-scrollbar{
+    display: none;
+}
+.cover_box{
+    height: auto;
+    width: 11.56rem;
+}
+
+.artist_cover{
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    background-color: none;
+    border-radius: 7px;
+    height:16.4rem;
+    width: 12.5rem;
+    cursor: pointer;
+}
+.music_cover{
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    background-color: none;
+    border-radius: 7px;
+    height:17.4rem;
+    width: 11.5rem;
+    cursor: pointer;
+}
+
+.genbox_img_artist{
+    border-radius: 120px;
+    height: 11.5rem;
+    width: 100%;
+}
+.artisttext{
+    font-size: 1rem;
+    margin-top: 1px;
+}
+
+.playicon_design{
+    display: none;
+    opacity: 0;
+    left: 7.9rem;
+    bottom: 5.9rem;
+    height: 3.5rem;
+    width: 3.5rem;
+    color: black;
+    position: absolute;
+    z-index: 3;
+    transform: translateY(10px);
+}
+
+.playicon_design2{
+    display: none;
+    opacity: 0;
+    left: 115px;
+    top: 10px;
+    height: 55px;
+    width: 55px;
+    color: black;
+    position: relative;
+    z-index: 3;
+    transform: translateY(10px);
+}
+
+/* Animate play icon */
+.animateicon{
+    animation: moveup 0.4s both;
+}
+@keyframes moveup {
+    0%{
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px)
+    }
+}
+
+.animateicon2{
+    animation: moveup2 0.4s both;
+}
+@keyframes moveup2 {
+    0%{
+        opacity: 0;
+        transform: translateX(6px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0px)
+    }
+}
+
+/* Error Div */
+.error_div{
+    background-image: linear-gradient(180deg,rgba(28,14,67,255),rgba(18,19,19,255));
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height:100%;
+    display: none;
+}
+
+.error_div i{
+    position: relative;
+    color:white;
+    top: 20vh;
+    left:35vw;
+    font-size: 100px;
+}
+.error_div div{
+    position: relative;
+    color:white;
+    font-weight: bolder;
+    top: 24vh;
+    left:24vw;
+    font-size: 23px;
+    height: 50px;
+    width: 500px;
+}
+
+/* Responsive CSS */
+@media screen and (max-width: 1240px) {
+    .topbox_img{
+        width: 30rem;
+        height: 15rem;
+    }
+    .albumflex{
+        column-gap: 70px;
+    }
+    
+    
+    .genbox{
+        width: 180px;
+    }
+    .genbox_img{
+        height: 11.5rem;
+    }
+    .playicon_design{
+        left: 6.9rem;
+        bottom: 6.9rem;
+    }
+}
+@media screen and (max-width: 895px) {
+    .album{
+        padding-left: 25px;
+    }
+    .albumflex_left{
+        position: absolute;
+        left: 15px;
+    }
+    .albumflex_right{
+        position: absolute;
+        right: 15px;
+    }
+    
+    
+    .topbox_img{
+        width: 35rem;
+        height: 18rem;
+    }
+    .albumflex{
+        column-gap: 60px;
+    }
+    .genbox{
+        width: 150px;
+    }
+    .genbox_img{
+        height: 9.5rem;
+    }
+    .genbox_flex{
+        column-gap: 45px;
+    }
+    .playicon_design{
+        left: 5.9rem;
+        bottom: 8.1rem;
+    }
+    
+}
+@media screen and (max-width: 690px) {
+    .topbox_img{
+        width: calc(100vw - 150px);
+        height: calc((100vw - 150px)/1.75);
+    }
+    .albumflex{
+        column-gap: 15px;
+    }
+    .albumflex_left{
+        position: absolute;
+        left: 10px;
+        font-size: 20px;
+        top: 53%;
+    }
+    .albumflex_right{
+        position: absolute;
+        right: 10px;
+        font-size: 20px;
+        top: 53%;
+    }
+    .playicon_design{
+        left: 5.9rem;
+        bottom: 8.1rem;
+    }
+}
+@media screen and (max-width: 518px) {
+    .genbox_flex{
+        column-gap: 35px;
+    }
+}
+
+@media screen and (max-width: 690px) {
+    .topbox_img{
+        width: calc(100vw - 100px);
+        height: calc((100vw - 100px)/1.75);
+    }
+    .albumflex{
+        column-gap: 15px;
+    }
+    .albumflex_left{
+        position: absolute;
+        left: 10px;
+        font-size: 20px;
+        top: 53%;
+    }
+    .albumflex_right{
+        position: absolute;
+        right: 10px;
+        font-size: 20px;
+        top: 53%;
+    }
+}

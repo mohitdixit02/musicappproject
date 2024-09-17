@@ -1,0 +1,127 @@
+.LoginPopup_main{
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.607);
+    /* display: none; */
+    display: flex;
+}
+.LoginPopup{
+    z-index: 101;
+    width: 40%;
+    height: 60%;
+    background-color: rgba(87, 87, 135, 0.952);
+}
+
+/* Login Cross */
+.login_popup_cross{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+.login_popup_cross i{
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+.login_popup_cross i:hover{
+    color: red;
+}
+
+/* Login tab */
+.tab_selector_login_popup{
+    display: flex;
+    justify-content: space-evenly;
+    width: calc(100% - 20px);
+    margin: 0 10px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+.tab_selector_login_popup div{
+    text-align: center;
+    padding: 6px 0;
+    width: 50%;
+    cursor: pointer;
+}
+.tab_selector_login_popup div:hover{
+    background-color: rgb(87, 84, 255);
+}
+
+/* Login Form */
+.login_popup_login{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+.login_popup_login input{
+    width: calc(100% - 80px);
+    margin: 0 25px;
+    padding: 15px 15px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    color: white;
+    background-color: rgba(134, 134, 187, 0.952);
+}
+.login_popup_login input::placeholder{
+    color: rgb(182, 182, 203);
+}
+
+.login_popup_login button{
+    width: calc(100% - 50px);
+    margin: 0 25px;
+    padding: 15px 15px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    color: white;
+    background-color: rgb(132, 108, 223);
+    cursor: pointer;
+}
+
+/* Sign In Form*/
+
+.login_popup_signin{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+}
+.login_popup_signin div{
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 30px);
+    margin: 0 15px;
+}
+.login_popup_signin input{
+    width: calc(50% - 30px);
+    font-size: 16px;
+    outline: none;
+    color: white;
+    border: 0;
+    padding: 12px;
+    background-color: rgba(134, 134, 187, 0.952);
+}
+.login_popup_signin input::placeholder{
+    color: rgb(182, 182, 203);
+}
+
+.login_popup_signin button{
+    width: calc(100% - 30px);
+    margin: 0 15px;
+    padding: 15px 15px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    color: white;
+    background-color: rgb(61, 194, 52);
+    cursor: pointer;
+}
