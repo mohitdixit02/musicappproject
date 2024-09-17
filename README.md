@@ -98,4 +98,4 @@ I am happy for any suggestions or improvements. Feel free to open an issue or pu
 or you can email me on: mohit.vsht@gmail.com
 
 Thanks !!
-Mohit Sharma
+<h3>Mohit Sharma</h3>
