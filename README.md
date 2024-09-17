@@ -59,3 +59,31 @@
     </ul>
 
 You can also checkout 'requirements.txt' for more details.
+
+<h3>Steps to start project</h3>
+1. Clone the repository
+
+```bash
+git clone https://github.com/mohitdixit02/musicappproject.git
+```
+
+2. Open the project in terminal and install the dependencies
+
+```bash
+cd musicappproject/backend
+pip install -r requirements.txt
+```
+
+3. Start the backend server
+
+```bash
+python manage.py runserver
+```
+
+In case you want to start the dev server of frontend, open another terminal and run the following commands:
+
+```bash
+cd musicappproject/backend/frontend
+npm install
+npm start
+```
