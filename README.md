@@ -1,6 +1,6 @@
 <h1>Music Web Application</h1>
 <p>
-    A full stack web application made as a self project to demonstrate the use of Django and React. The application is a platform having the following key features:
+    A full-stack music web application made as a self project to demonstrate the use of Django and React. The application is a platform having the following key features:
     <ul>
         <li>Register and login to the application</li>
         <li>Search for different music categories</li>
@@ -25,6 +25,16 @@
            <ol>
            <li> APIs for user registration, music search, music streaming, providing data related to music, artists, etc. </li>
            <li> platform to directly serve the frontend </li>
+        </p>
+    </li>
+    <li>
+        <h3>Database: Firebase (Real time and cloud storage), SQLite</h3>
+        <p>
+           All the important data for the application is stored in Firebase as well as SQLite. The application use firebase SDK to interact with the firebase database. The types of databases used are:
+           <ol>
+            <li>Real time database: Connected to frontend and store information about the liked songs and playlists of a user.</li>
+            <li>Cloud Storage: Connected to backend and store mp3 files, media files, music cover images, images of artists, etc. </li>
+            <li>SQLite: Inbuilt Django Database is used to store the metadata of music, artists and users.</li>
         </p>
     </li>
 </ul>
