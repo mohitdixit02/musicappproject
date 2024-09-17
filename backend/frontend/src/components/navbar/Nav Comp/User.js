@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import {backend_url} from "../../utility/url_info";
 
 function User(props) {
-  const [buttonstate, setButtonstate] = useState(false);
-  const [displayuser, setDisplayuser] = useState('User');
   const user = props.user;
   const setUser = props.setUser;
   const navigate = useNavigate();
@@ -14,12 +13,24 @@ function User(props) {
     document.querySelector('.LoginPopup_main').style.display = 'flex';
   }
 
+  // Logout function
+  function triggerLogout() {
+    axios.get(`${backend_url}/user/logout/`).then((response) => {
+      const resp = response.data;
+      if(resp.code === "success"){
+        setUser("none");
+      }
+    });
+  }
+
   //get user name
   setTimeout(() => {
-    axios.get('/user/getuser/').then((response) => {
-      const resp = response.data[0];
-      setDisplayuser(resp['first_name']);
-      setUser(resp['user_id']);
+    axios.get(`${backend_url}/user/getuser/`).then((response) => {
+      const resp = response.data;
+      if(resp.code === "success"){
+        let data = resp.data[0];
+        setUser(data['user_id'])
+      }
     });
   }, 100);
 
@@ -47,7 +58,9 @@ function User(props) {
           </button>
           :
           <div>
-            
+            <button onClick={triggerLogout}>
+              Logout
+            </button>
           </div>
                )}
       </div>

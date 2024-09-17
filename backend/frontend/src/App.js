@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div className='app'>
-      <Login />
+      <Login user={user} setUser={setUser} />
       <Routes>
         <Route exact path='*' element={
           <div className='top'>

@@ -109,7 +109,20 @@ def getUser(request):
         user_data = UserInfo.objects.filter(user_id=user)
         serialize_data = OnlyNameserializer(user_data, many=True)
         final_data = serialize_data.data
-        return Response(final_data)
+
+
+
+        # ################# Testing #################
+        return Response(
+            {
+                "code": "success",
+                "message": "User Found",
+                "data": final_data
+            })
+    
+    # return Response(
+    #     {'code': "success", 'message': "User Found", 'data': [{'user_id': "mohit_sharma", 'first_name': "Mohit"}]}
+    # )
     else:
         return Response([
             {
@@ -127,7 +140,7 @@ def fullUser(request):
     final_data = serialize_data.data
     return Response(final_data)
 
-
+@api_view(['GET'])
 def logout_user(request):
     logout(request)
     print("Logged Out successfully")

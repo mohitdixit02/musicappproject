@@ -7,8 +7,7 @@
     height: 100%;
     z-index: 100;
     background-color: rgba(0, 0, 0, 0.607);
-    /* display: none; */
-    display: flex;
+    display: none;
 }
 .LoginPopup{
     z-index: 101;
