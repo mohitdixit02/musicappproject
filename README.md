@@ -88,3 +88,11 @@ cd musicappproject/backend/frontend
 npm install
 npm start
 ```
+
+<h2>Suggestions</h2>
+I am happy for any suggestions or improvements. Feel free to open an issue or pull request.
+or you can email me on: mohit.vsht@gmail.com
+
+Thanks !!
+
+<h3>Author: Mohit Sharma</h3>
