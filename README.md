@@ -33,7 +33,7 @@
         <p>
            All the important data for the application is stored in Firebase as well as SQLite. The application use firebase SDK to interact with the firebase database. The types of databases used are:
            <ol>
-                <li>Real time database: Connected to frontend and store information about the liked songs and playlists of a user.</li>
+                <li>**Real time database**: Connected to frontend and store information about the liked songs and playlists of a user.</li>
                 <li>Cloud Storage: Connected to backend and store mp3 files, media files, music cover images, images of artists, etc. </li>
                 <li>SQLite: Inbuilt Django Database is used to store the metadata of music, artists and users.</li>
             </ol>
