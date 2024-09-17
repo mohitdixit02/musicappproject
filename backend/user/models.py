@@ -7,7 +7,6 @@ class UserInfo(models.Model):
     first_name = models.CharField(max_length=15)
     last_name = models.CharField(max_length=15)
     dob = models.CharField(max_length=12)
-    address = models.CharField(max_length=150)
     number = models.CharField(max_length=10,default=0)
 
     def __str__(self):

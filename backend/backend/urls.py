@@ -11,7 +11,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('req_data/',include('song.urls')),
     path('user/', include('user.urls')),
-    # re_path(r'^/*', views.indexRepath, name='indexRedf'),
-    # re_path(r'^favicon\.ico$', RedirectView.as_view(url = staticfiles_storage('img/favicon.ico'))),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    re_path(r'^favicon\.ico$', RedirectView.as_view(url = staticfiles_storage.url('favicon.ico'))),
+]
 

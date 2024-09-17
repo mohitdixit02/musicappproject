@@ -3,6 +3,7 @@ import React from 'react';
 import "./Login.css";
 import axios from "axios";
 import { backend_url } from "../../utility/url_info";
+import getCSRFToken from "../../utility/session";
 
 export default function Login() {
     const [login, setLogin] = useState(true);
@@ -14,14 +15,58 @@ export default function Login() {
     function attemptLogin() {
         let username = document.getElementsByName('login_input_username')[0].value;
         let password = document.getElementsByName('login_input_password')[0].value;
-        axios.post(`${backend_url}/user/login/`, JSON.stringify({
+
+        axios.defaults.headers.common['X-CSRFToken'] = getCSRFToken();
+        axios.post(`${backend_url}/user/login/`, {
             'username': username,
             'password': password
-        }
-        ),).then((response) => {
-            console.log(response.data);
-        })
+        },
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                withCredentials: true,
+            }
+            ,).then((response) => {
+                console.log(response.data);
+            })
     }
+
+    function attemptSign() {
+        let first_name = document.getElementsByName('first_name')[0].value;
+        let last_name = document.getElementsByName('last_name')[0].value;
+        let email = document.getElementsByName('email')[0].value;
+        let user_name = document.getElementsByName('user_name')[0].value;
+        let mobile_no = document.getElementsByName('mobile_no')[0].value;
+        let dob = document.getElementsByName('dob')[0].value;
+        let password = document.getElementsByName('password')[0].value;
+        let c_password = document.getElementsByName('c_password')[0].value;
+
+        if (password !== c_password) {
+            alert("Password and Confirm Password do not match");
+        }
+
+        axios.defaults.headers.common['X-CSRFToken'] = getCSRFToken();
+        axios.post(`${backend_url}/user/signup/`, {
+            'first_name': first_name,
+            'last_name': last_name,
+            'email': email,
+            'username': user_name,
+            'number': mobile_no,
+            'dob': dob,
+            'password': password,
+        },
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                withCredentials: true,
+            }
+            ,).then((response) => {
+                console.log(response.data);
+            })
+    }
+
     return (
         <div className="LoginPopup_main">
             <div className='LoginPopup'>
@@ -53,10 +98,14 @@ export default function Login() {
                                 <input type="text" name="user_name" placeholder="Username" />
                             </div>
                             <div>
+                                <input type="password" name="password" placeholder="Enter Password" />
+                                <input type="password" name="c_password" placeholder="Confirm Password" />
+                            </div>
+                            <div>
                                 <input type="text" name="mobile_no" placeholder="Mobile Number" />
                                 <input type="date" name="dob" placeholder="Date of Birth" />
                             </div>
-                            <button>
+                            <button onClick={attemptSign}>
                                 SignIn
                             </button>
                         </div>

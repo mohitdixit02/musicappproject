@@ -12,7 +12,19 @@ from .serializers import OnlyNameserializer, Userserializer
 
 @api_view(['POST'])
 def login_user(request):
-    data = json.loads(request.body.decode('utf-8'))
+
+    # if user is already logged in
+    if not request.user.is_anonymous:
+        user = request.user
+        if user.username == request.data['username']:
+            return Response({
+                "code": "alert",
+                "user_id": user.username,
+                "first_name": user.first_name,
+                "message": "Already Logged In"
+            })
+
+    data = request.data
     username = data['username']
 
     if username is not None:
@@ -20,60 +32,74 @@ def login_user(request):
         user = authenticate(request, username=username, password=login_password)
 
         if user is not None:
-            if user.is_authenticated:
-                return Response({
-                    "user_id": username,
-                    "first_name": user.first_name,
-                    "message": "Already Logged In"
-                })
 
             login(request, user)
             print("User Logged In")
             return Response(
                 {
+                    "code":"success",
                     "user_id": username,
                     "first_name": "User",
                     "message": "Login Successful"
                 }
             )
         else:
+            print("No user found")
             return Response(
                 {
-                    "user_id": "none",
-                    "first_name": "User",
+                    "code":"error",
                     "message": "Invalid Credentials"
                 }
             )
     return Response({
-        "user_id": "none",
-        "first_name": "User",
+        "code":"error",
         "message": "Invalid Credentials"
     })
 
-
+@api_view(['POST'])
 def signup(request):
-    new_username = request.POST.get('username')
+    request_data = request.data
+    new_username = request_data.get('username')
     if new_username:
-        fname = request.POST.get('fname')
-        lname = request.POST.get('lname')
-        email = request.POST.get('email')
-        dob = request.POST.get('dob')
-        address = request.POST.get('address')
-        no = request.POST.get('number')
-        password = request.POST.get('password')
+        fname = request_data.get('first_name')
+        lname = request_data.get('last_name')
+        email = request_data.get('email')
+        dob = request_data.get('dob')
+        no = request_data.get('number')
+        password = request_data.get('password')
+
+        if(fname == "" or lname == "" or email == "" or dob == "" or no == "" or password == ""):
+            return Response({
+                "code": "error",
+                "message": "Missing Information in one of the fields"
+            })
+
         u = User.objects.filter(username=new_username)
         if not u:
+            # saving user
             w = User.objects.create_user(new_username, email, password)
-            w.save()
-            w_info = UserInfo.objects.create(
-                user_id=new_username, first_name=fname, last_name=lname, dob=dob, address=address, number=no)
-            w_info.save()
-            messages.success(request, "Signup Successfully")
-            return redirect('/user/login')
-        else:
-            messages.error(request, "Username already exists")
 
-    return render(request, 'signup.html')
+            # saving user info
+            w_info = UserInfo.objects.create(
+                user_id=new_username, first_name=fname, last_name=lname, dob=dob, number=no)
+            
+            w.save()
+            w_info.save()
+            return Response({
+                "code": "success",
+                "user_id": new_username,
+                "message": "Signup Successful"
+            })
+        else:
+            return Response({
+                "code": "alert",
+                "message": "Username Already Exists"
+            })
+
+    return Response({
+        "code": "error",
+        "message": "Invalid Credentials"
+    })
 
 
 @api_view(['GET'])
@@ -87,8 +113,8 @@ def getUser(request):
     else:
         return Response([
             {
-                "user_id": "none",
-                "first_name": "User"
+                "code": "error",
+                "message": "User not logged in"
             }
         ])
 
@@ -100,18 +126,12 @@ def fullUser(request):
     serialize_data = Userserializer(user_data, many=True)
     final_data = serialize_data.data
     return Response(final_data)
-    # return Response([
-    #     {
-    #         "user_id": "mohit_vsht",
-    #         "first_name": "Mohit",
-    #         "last_name": "Sharma",
-    #         "dob": "2002-07-14",
-    #         "address": "A-37, Ganga Bhawan, IIT-Roorkee",
-    #         "number": "7009446375"
-    #     }
-    # ])
 
 
 def logout_user(request):
     logout(request)
-    return redirect('/')
+    print("Logged Out successfully")
+    return Response({
+        "code": "success",
+        "message": "Logged Out"
+    })
