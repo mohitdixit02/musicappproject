@@ -61,6 +61,7 @@
 You can also checkout 'requirements.txt' for more details.
 
 <h3>Steps to start project</h3>
+
 1. Clone the repository
 
 ```bash
