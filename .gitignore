@@ -1,5 +1,6 @@
 # frontend
 backend/frontend/node_modules
+.env
 
 # backend
 __pycache__/
