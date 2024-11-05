@@ -117,7 +117,7 @@ function Audiocontrols(props) {
     useEffect(() => {
       if (window.location.pathname == '/currenttrack') {
         let temp = document.getElementById('musiclist');
-        temp.style.color = 'rgba(32,215,97,255)';
+        temp.style.color = 'rgb(135, 117, 255)';
       }
       else {
         let temp = document.getElementById('musiclist');
