@@ -35,11 +35,13 @@ def login_user(request):
 
             login(request, user)
             print("User Logged In")
+            user_info = UserInfo.objects.filter(user_id=username)[0]
+            firstName = Userserializer(user_info).data['first_name']
             return Response(
                 {
                     "code":"success",
                     "user_id": username,
-                    "first_name": user.first_name,
+                    "first_name": firstName,
                     "message": "Login Successful"
                 }
             )
