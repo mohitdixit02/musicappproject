@@ -5,13 +5,20 @@ import './Open.css'
 import conv from '../utility/time_conv';
 import axios from 'axios'
 import {backend_url} from '../utility/url_info';
+import { useTrackContext } from '../MainWrapper/MainWrapper';
 
 function OpenSonglist(props) {
+    const {
+        trackslist,
+        setTrackslist,
+        setActivestate,
+        current_track,
+    } = useTrackContext();
     const song = props.songlist;
-    const trackfn = props.trackfn;
-    const tracklist = props.tracklist;
-    const ctrack = props.ctrack;
-    const user = props.user;
+    const trackfn = setTrackslist;
+    const tracklist = trackslist;
+    const ctrack = current_track;
+    const user = sessionStorage.getItem('user');
     function playsongtd(e) {
         let temp = e.target.parentElement.id;
         if (temp != '') {
@@ -23,8 +30,7 @@ function OpenSonglist(props) {
                     trackfn(song);
                 }
             }
-            let fn = props.actvfn;
-            fn(temp);
+            setActivestate(temp);
         }
     }
 

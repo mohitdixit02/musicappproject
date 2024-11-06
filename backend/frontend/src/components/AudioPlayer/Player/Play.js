@@ -7,10 +7,14 @@ import music_wave from "../../../media/Music_wave.png";
 import Showtracks from '../ShowTracks/Showtracks';
 import { useNavigate, Link } from 'react-router-dom';
 import { backend_url } from '../../utility/url_info';
+import { useTrackContext } from "../../MainWrapper/MainWrapper";
 
-export default function Play(props) {
+export default function Play() {
+  const { trackslist,
+    actvstate,
+    current_track,
+    setCurrent_track } = useTrackContext();
   //Variables
-  let tracklist = props.tracklist;
 
   //defined states
   const [isPlaying, setPlaystate] = useState(false);
@@ -20,10 +24,9 @@ export default function Play(props) {
   const [trackprogress, SetProgress] = useState(0);
   const [volume_level, setVolume] = useState(100);
   const [repeat, setRepeat] = useState(false);
-  const current_track = props.current_track;
-  const setCurrent_track = props.setCurrent_track;
-  const actv = props.actv;
+  const actv = actvstate;
   const navigate = useNavigate();
+  let tracklist = trackslist;
 
   // functions
   useEffect(() => {

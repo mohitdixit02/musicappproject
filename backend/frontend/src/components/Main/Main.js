@@ -6,14 +6,16 @@ import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import { GetSong, GetArtist, GetArtistinfo, GetAlbuminfo, GetMusicinfo, GetCategory } from '../utility/server_request_functions.js';
 import { backend_url } from '../utility/url_info.js';
+import { useTrackContext } from '../MainWrapper/MainWrapper.jsx';
 
 import i1 from "../../media/explore_back_cover/Bollywood.jpg";
 import i2 from "../../media/explore_back_cover/English.jpg";
 import i3 from "../../media/explore_back_cover/Kpop.jpg";
 import i4 from "../../media/explore_back_cover/Punjabi.jpg";
 
-const Main = (props) => {
-    let trackfn = props.trackfn;
+const Main = () => {
+    const { setTrackslist } = useTrackContext();
+    let trackfn = setTrackslist;
     const [genere, setGenere] = useState();
     const navigate = useNavigate();
 

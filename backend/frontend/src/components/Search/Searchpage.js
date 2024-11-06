@@ -9,6 +9,7 @@ import { ref, set, onValue, remove } from "firebase/database"
 import database from '../../Firebase/Firebase'
 import { GetMusicinfo, GetArtistinfo, GetAlbuminfo, GetCategory } from '../utility/server_request_functions';
 import { backend_url } from '../utility/url_info';
+import {getTrackConetxt, useTrackContext} from "../MainWrapper/MainWrapper";
 
 function Searchpage(props) {
   const navigate = useNavigate();
@@ -19,6 +20,16 @@ function Searchpage(props) {
   const [top, setTopinfo] = useState([]);
   const [type, setType] = useState('');
   const user = props.user;
+
+  const {
+    trackslist,
+    setTrackslist,
+    actvstate,
+    setActivestate,
+    current_track,
+    setCurrent_track
+  } = useTrackContext();
+
   async function getGenere() {
     try {
       GetSong().then((response) => {
@@ -32,9 +43,9 @@ function Searchpage(props) {
   }, [])
 
   //Playing audio function
-  const trackfn = props.trackfn;
-  const tracklist = props.track;
-  const ctrack = props.current_track;
+  const trackfn = setTrackslist;
+  const tracklist = trackslist;
+  const ctrack = current_track;
   function playsongtd(e) {
     let temp = e.target.parentElement.id;
     if (temp != '') {
@@ -46,9 +57,7 @@ function Searchpage(props) {
           trackfn(song);
         }
       }
-      let fn = props.actvfn;
-      console.log(temp);
-      fn(temp);
+      setActivestate(temp);
     }
   }
 

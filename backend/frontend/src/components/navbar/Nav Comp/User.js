@@ -4,10 +4,18 @@ import axios from 'axios'
 import { backend_url } from "../../utility/url_info";
 import user_image from "../../../media/user_logo.jpg";
 
-function User(props) {
-  const user = props.user;
-  const setUser = props.setUser;
+function User() {
+  const [user, setUser] = useState('none');
   const [displayUser, setDisplayUser] = useState('none');
+
+  useEffect(() => {
+    let user = sessionStorage.getItem('user');
+    if (user) {
+      setUser(user);
+      setDisplayUser(sessionStorage.getItem('first_name') || "Guest");
+    }
+  },[user]);
+
   // const navigate = useNavigate();
 
   //Login Pannel function
@@ -21,21 +29,11 @@ function User(props) {
       const resp = response.data;
       if (resp.code === "success") {
         setUser("none");
+        sessionStorage.removeItem('user');
+        sessionStorage.removeItem('first_name');
       }
     });
   }
-  
-  //get user name
-  setTimeout(() => {
-    axios.get(`${backend_url}/user/getuser/`).then((response) => {
-      const resp = response.data;
-      if (resp.code === "success") {
-        let data = resp.data[0];
-        setUser(data['user_id'])
-        setDisplayUser(data['first_name'])
-      }
-    });
-  }, 100);
 
   //Artist Info function
   // function viewProfile() {

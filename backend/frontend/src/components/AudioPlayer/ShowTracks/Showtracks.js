@@ -5,15 +5,25 @@ import database from '../../../Firebase/Firebase';
 import conv from '../../utility/time_conv'
 import axios from 'axios';
 import './Showtrack.css';
-import {backend_url} from "../../utility/url_info";
+import { backend_url } from "../../utility/url_info";
+import { useTrackContext } from '../../MainWrapper/MainWrapper';
 
 function Showtracks(props) {
+    const {
+        trackslist,
+        setTrackslist,
+        actvstate,
+        setActivestate,
+        current_track,
+        setCurrent_track
+    } = useTrackContext();
+
     let location = useLocation();
     const song = location?.state?.data;
-    const user = props.user;
-    const trackfn = props.trackfn;
-    const tracklist = props.track;
-    const ctrack = props.current_track;
+    const user = sessionStorage.getItem('user');
+    const trackfn = setTrackslist;
+    const tracklist = trackslist;
+    const ctrack = current_track;
     function playsongtd(e) {
         let temp = e.target.parentElement.id;
         if (temp != '') {
@@ -25,9 +35,7 @@ function Showtracks(props) {
                     trackfn(song);
                 }
             }
-            let fn = props.actvfn;
-            console.log(temp);
-            fn(temp);
+            setActivestate(temp);
         }
     }
 

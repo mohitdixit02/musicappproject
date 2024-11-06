@@ -5,15 +5,16 @@ import database from '../../Firebase/Firebase'
 import { useNavigate, Link } from 'react-router-dom'
 import logo from '../../media/leftpannel_logo.png'
 
-const Leftpannel = (props) => {
-    const user = props.user;
+const Leftpannel = () => {
+    const user = sessionStorage.getItem('user');
+    const url_state = window.location.pathname.split('/')[1];
     setTimeout(() => {
         let w = document.getElementsByClassName('leftpannel_actv')
         for (let item of w) {
             item.className = 'leftpannel_actv';
         }
-        if (props.state != 'none') {
-            let active = document.getElementById(props.state);
+        if (url_state != 'none') {
+            let active = document.getElementById(url_state === "" ? 'home' : url_state);
             try {
                 active.className = 'leftpannel_actv active';
             } catch { }

@@ -5,7 +5,7 @@ import axios from "axios";
 import { backend_url } from "../../utility/url_info";
 import getCSRFToken from "../../utility/session";
 
-export default function Login({user, setUser}) {
+export default function Login() {
     const [login, setLogin] = useState(true);
 
     function closePopUp() {
@@ -30,8 +30,10 @@ export default function Login({user, setUser}) {
             ,).then((response) => {
                 const resp = response.data;
                 if(resp.code === "success"){
-                    setUser(resp.user_id);
+                    sessionStorage.setItem('user', resp.user_id);
+                    sessionStorage.setItem('first_name', resp.first_name);
                     closePopUp();
+                    window.location.reload();
                 }
             })
     }

@@ -4,8 +4,12 @@ import tick from '../../media/tick.jpg';
 import { useLocation } from 'react-router-dom'
 import OpenSonglist from './OpenSonglist'
 import { backend_url } from '../utility/url_info';
+import { useTrackContext } from '../MainWrapper/MainWrapper';
 
-const Open = (props) => {
+const Open = () => {
+    const {
+        setTrackslist,
+    } = useTrackContext();
     const location = useLocation();
     if (location.state.type == 'music') {
         let temp = location.state.data[0];
@@ -14,7 +18,7 @@ const Open = (props) => {
 
         //Play fn
         function play_open_audio(e) {
-            props.trackfn([song_data]);
+            setTrackslist([song_data]);
             let target = e.target;
             // if(target.className == 'bi bi-play-circle'){
             //     target.className = 'bi bi-pause-circle';
@@ -28,7 +32,7 @@ const Open = (props) => {
             <div className="open_display">
                 <div className="top_div">
                     <div className='open_top_heading'>
-                        <img className='open_top_heading_img' src={`${temp.firebase_image_url}`}/>
+                        <img className='open_top_heading_img' src={`${temp.firebase_image_url}`} />
                         <div className='heading_text'>
                             <ul type='none'>
                                 <li style={{ 'marginLeft': '6px' }}>{temp.album}</li>
@@ -45,7 +49,7 @@ const Open = (props) => {
                 <div className="open_bottom_area">
                     <div>
                     </div>
-                    <OpenSonglist songlist={song_data} type={'music'} tracklist={props.track} actvfn={props.actvfn} trackfn={props.trackfn} ctrack={props.current_track} user={props.user} />
+                    <OpenSonglist songlist={song_data} type={'music'} />
                 </div>
             </div>
         )
@@ -60,8 +64,7 @@ const Open = (props) => {
 
         //play fn
         function play_open_artistaudio() {
-            let trackfn = props.trackfn
-            trackfn(artist_song_data);
+            setTrackslist(artist_song_data);
         }
         return (
             <div className="open_display">
@@ -77,7 +80,7 @@ const Open = (props) => {
                             <ul type='none'>
                                 <li style={{ 'display': 'flex' }}><img src={tick} height={'40px'} width={'75px'} /><span style={{ 'position': 'relative', 'top': '10px', 'right': '18px' }}>Verified Artist</span>
                                 </li>
-                                <li className='open_name_head' style={{'marginLeft': '28px' }}>{artist_info.name}</li>
+                                <li className='open_name_head' style={{ 'marginLeft': '28px' }}>{artist_info.name}</li>
                                 <br />
                                 <li style={{ 'marginLeft': '32px' }}>{listn} monthly listeners</li>
                                 <button style={{ 'marginLeft': '29px' }} onClick={play_open_artistaudio}>
@@ -92,7 +95,7 @@ const Open = (props) => {
                             <i className="bi bi-play-circle" onClick={play_open_artistaudio}></i>
                         </div>
                     </div> */}
-                    <OpenSonglist ctrack={props.current_track} trackfn={props.trackfn} songlist={artist_song_data} tracklist={props.track} type={'album'} actvfn={props.actvfn} user={props.user} />
+                    <OpenSonglist songlist={artist_song_data} type={'album'} />
                     <div className="about">
                         <h1>About</h1>
                         <br />
@@ -114,7 +117,7 @@ const Open = (props) => {
         const song_data = location.state.data;
         let temp = song_data[0];
         function play_open_album() {
-            props.trackfn(song_data);
+            setTrackslist(song_data);
         }
 
         //no of songs
@@ -141,7 +144,7 @@ const Open = (props) => {
             <div className="open_display">
                 <div className="top_div">
                     <div className='musicshow_wrapper' style={{
-                    'backgroundImage': `url(${temp.firebase_image_url})`,
+                        'backgroundImage': `url(${temp.firebase_image_url})`,
                     }}></div>
                     <div className='open_top_heading'>
                         <img className='open_top_heading_img' src={`${temp.firebase_image_url}`} />
@@ -158,10 +161,10 @@ const Open = (props) => {
                 <div className="open_bottom_area">
                     <div>
                         <div style={{ 'display': 'flex' }}>
-                            <i className="bi bi-play-circle"  onClick={play_open_album}></i>
+                            <i className="bi bi-play-circle" onClick={play_open_album}></i>
                         </div>
                     </div>
-                    <OpenSonglist ctrack={props.current_track} trackfn={props.trackfn} songlist={song_data} tracklist={props.track} type={'album'} actvfn={props.actvfn} user={props.user} />
+                    <OpenSonglist songlist={song_data} type={'album'} />
                 </div>
             </div>
         )

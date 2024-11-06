@@ -3,10 +3,12 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { backend_url } from '../../utility/url_info';
 import { useState, useEffect } from 'react';
+import {useTrackContext} from "../../MainWrapper/MainWrapper";
 
-function Musicdisplay(props) {
+function Musicdisplay() {
+    const {current_track} = useTrackContext();
     let navg = useNavigate();
-    const ctrack = props.current_track;
+    const ctrack = current_track;
     const [data, setData] = useState(ctrack);
     useEffect(() => {
         setData(ctrack);

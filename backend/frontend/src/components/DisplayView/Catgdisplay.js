@@ -9,15 +9,24 @@ import '../DisplayView/Catgdisplay.css';
 import '../Main/main.css';
 import { GetArtistinfo } from '../utility/server_request_functions';
 import { backend_url } from '../utility/url_info';
+import { useTrackContext } from '../MainWrapper/MainWrapper';
 
 function Catgdisplay(props) {
+    const {
+        trackslist,
+        setTrackslist,
+        actvstate,
+        setActivestate,
+        current_track,
+        setCurrent_track
+    } = useTrackContext();
     let location = useLocation();
     const data = location.state.data;
     const navigate = useNavigate();
-    const user = props.user;
-    const trackfn = props.trackfn;
-    const tracklist = props.track;
-    const ctrack = props.current_track;
+    const user = sessionStorage.getItem('user');
+    const trackfn = setTrackslist;
+    const tracklist = trackslist;
+    const ctrack = current_track;
 
     //Liked Songs function
     function liked_song(e) {
@@ -95,9 +104,7 @@ function Catgdisplay(props) {
                         trackfn(song);
                     }
                 }
-                let fn = props.actvfn;
-                console.log(temp);
-                fn(temp);
+                setActivestate(temp);
             }
         }
         return (

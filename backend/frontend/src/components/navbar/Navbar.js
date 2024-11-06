@@ -17,7 +17,7 @@ const Navbar = (props) => {
                     <Button />
                     <Search display={props.display} setSearchvalue={props.setSearchvalue} />
                 </div>
-                <User user={props.user} setUser={props.setUser} />
+                <User/>
             </div>
         </>
     );
