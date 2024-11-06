@@ -5,13 +5,20 @@ import p from '../../../media/playicon.jpg'
 import conv from '../../utility/time_conv'
 import { ref, set, onValue, remove } from "firebase/database"
 import database from '../../../Firebase/Firebase'
-import { backend_url } from '../../utility/url_info'
+import { backend_url } from '../../utility/url_info';
+import { useTrackContext } from "../../MainWrapper/MainWrapper";
 
 function Likedsongs(props) {
     //Getting Song_data
     const [song_data, setData] = useState([]);
     const [data_length, setDatalength] = useState();
-    const user = props.user;
+    const user = sessionStorage.getItem("user");
+    const {
+        trackslist,
+        setTrackslist,
+        setActivestate,
+        current_track,
+    } = useTrackContext();
 
     //Playlist Owner
     const [name, SetName] = useState('');
@@ -64,14 +71,14 @@ function Likedsongs(props) {
     }
 
     //Play Audio
-    let trackfn = props.trackfn;
+    let trackfn = setTrackslist;
     function play_open_like() {
         trackfn(data);
     }
 
 
     // Play single audio fn
-    const tracklist = props.tracklist;
+    const tracklist = trackslist;
     function playsongtd(e) {
         let temp = e.target.parentElement.id;
         if (temp != '') {
@@ -83,8 +90,7 @@ function Likedsongs(props) {
                     trackfn(data);
                 }
             }
-            let fn = props.actvfn;
-            fn(temp);
+            setActivestate(temp);
         }
     }
 
@@ -141,7 +147,7 @@ function Likedsongs(props) {
     }
 
     //Color change of active song
-    const ctrack = props.current_track;
+    const ctrack = current_track;
     useEffect(() => {
         //changing layout
         setTimeout(() => {
@@ -168,8 +174,7 @@ function Likedsongs(props) {
     return (
         <div className="liked_display">
             <div className="liked_top_div">
-                <div className='liked_top_div_wrapper'></div>
-                <div className='open_top_heading'>
+                <div className='open_top_heading liked_top_heading'>
                     <i className="bi bi-heart-fill" id='liked_playlist_heart' />
                     <div className='heading_text'>
                         <ul type='none'>
@@ -183,12 +188,12 @@ function Likedsongs(props) {
             </div>
             <div className="liked_bottom_area">
                 <div>
-                    {user == 'none' || song_data == 'none' ? <></> :
-                    <div style={{ 'display': 'flex' }}>
-                        <img src={p} className='playicon_open' onClick={play_open_like} id='playicon_main_liked' />
+                    {user === 'none' || song_data == 'none' ? <></> :
+                    <div style={{ 'display': 'flex' }} className='playicon_liked'>
+                        <img alt='play_icon' src={p} onClick={play_open_like} id='playicon_main_liked' />
                     </div>}
                 </div>
-                {(user != 'none' && song_data != 'none' ?
+                {(user !== 'none' && song_data !== 'none' ?
                     <div className="liked_list">
                         <table className='likedtable' cellSpacing={0}>
                             <thead>

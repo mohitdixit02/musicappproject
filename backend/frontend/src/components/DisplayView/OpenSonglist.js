@@ -22,8 +22,8 @@ function OpenSonglist(props) {
     function playsongtd(e) {
         let temp = e.target.parentElement.id;
         if (temp != '') {
-            if (tracklist != song) {
-                if (props.type == 'music') {
+            if (tracklist !== song) {
+                if (props.type === 'music') {
                     trackfn([song]);
                 }
                 else {
@@ -40,10 +40,10 @@ function OpenSonglist(props) {
         icon_id = icon_id.substr(6, icon_id.length - 5);
         let k = document.getElementById(e.target.id);
         if (user != 'none') {
-            if (k.className == 'bi bi-heart') {
+            if (k.className === 'bi bi-heart') {
                 k.className = 'bi bi-heart-fill heart_icon';
                 //Setting data
-                axios.get(`/req_data/${icon_id}`).then((response) => {
+                axios.get(`${backend_url}/req_data/${icon_id}`).then((response) => {
                     const data = response.data[0];
                     set(ref(database, 'users/' + user + '/liked/' + icon_id + '/'), {
                         song: data
@@ -59,7 +59,7 @@ function OpenSonglist(props) {
     }
 
     //Setting Liked Songs on Load
-    if (user != 'none') {
+    if (user !== 'none') {
         setTimeout(() => {
             onValue(ref(database, 'users/' + user + '/liked/'), (snapshot) => {
                 const data = snapshot.val();

@@ -1,7 +1,8 @@
 .liked_display {
     overflow-y: overlay;
-    width: 84vw;
-    height: 90vh;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(21, 21, 32, 0.541);
 }
 
 .liked_display::-webkit-scrollbar {
@@ -13,21 +14,24 @@
     background-color: slategray;
 }
 
-/* DIv for top region */
-.liked_top_div_wrapper {
-    background-image: linear-gradient(180deg, rgb(245, 89, 89), rgb(169, 169, 255));
-    height: 280px;
-}
 
+
+/* DIv for top region */
+.liked_top_heading{
+    background-image: linear-gradient(145deg, rgb(255, 155, 155), rgb(43, 42, 103));
+    width: 98%;
+}
+.liked_top_heading i{
+    margin: 0 20px;
+}
 .liked_top_div {
     position: relative;
-    left: 0;
+    width: 100%;
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-.liked_top_div i {
-    margin: 0px 20px 15px 45px;
-}
-
 #liked_playlist_heart {
     background-image: linear-gradient(120deg, rgb(255, 0, 0), white);
     font-size: 75px;
@@ -36,41 +40,43 @@
     color: white;
     border-radius: 180px;
 }
-
 .liked_head {
     font-size: 70px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Div for buttons */
-.playicon_open {
+.playicon_liked{
     height: 60px;
     width: 60px;
-    color: black;
-    margin-left: 42px;
-    margin-top: 20px;
     cursor: pointer;
 }
 
 /* DIV for list of names */
 .liked_bottom_area {
-    top: 0px;
+    margin-left: 3%;
+    width: 97%;
     color: rgb(255, 255, 255);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 12px;
-    background-color: rgb(7, 2, 30);
+    display: flex;
+    flex-direction: column;
 }
 
 .liked_list {
-    padding: 25px 5px 50px 45px;
-    width: 80vw;
+    margin-top: 10px;
+    width: 97%;
     margin-bottom: 95px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .likedtable {
-    background-color: rgb(41, 38, 53);
+    background-color: rgba(74, 50, 50, 0.495);
     padding: 25px;
     text-align: left;
-    width: 95%;
+    width: 100%;
     font-size: 14px;
     border-radius: 15px;
 }
@@ -107,7 +113,6 @@
     cursor: pointer;
     font-weight: bold;
     color: aliceblue;
-    /* background-color: rgb(88, 87, 102); */
     background-color: rgb(134, 71, 71);
 }
 
