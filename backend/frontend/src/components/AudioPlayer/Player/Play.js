@@ -10,11 +10,12 @@ import { backend_url } from '../../utility/url_info';
 import { useTrackContext } from "../../MainWrapper/MainWrapper";
 
 export default function Play() {
-  const { trackslist,
+  const {
+    trackslist,
     actvstate,
     current_track,
-    setCurrent_track } = useTrackContext();
-  //Variables
+    setCurrent_track
+  } = useTrackContext();
 
   //defined states
   const [isPlaying, setPlaystate] = useState(false);

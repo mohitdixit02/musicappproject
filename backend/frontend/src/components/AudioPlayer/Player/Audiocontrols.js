@@ -104,7 +104,7 @@ function Audiocontrols(props) {
     if (!repeat) {
       setRepeat(true);
       props.song.current.loop = true;
-      w.style.color = 'rgba(32,215,97,255)';
+      w.style.color = 'rgb(135, 117, 255)';
     }
     else {
       setRepeat(false);
@@ -113,26 +113,28 @@ function Audiocontrols(props) {
     }
   }
 
-    //Function to show tracks list
-    useEffect(() => {
-      if (window.location.pathname == '/currenttrack') {
-        let temp = document.getElementById('musiclist');
-        temp.style.color = 'rgb(135, 117, 255)';
-      }
-      else {
-        let temp = document.getElementById('musiclist');
-        temp.style.color = 'lightgrey';
-      }
-  
-    }, [window.location.pathname])
+  //Function to show tracks list
+  useEffect(() => {
+    if (window.location.pathname == '/currenttrack') {
+      let temp = document.getElementById('musiclist');
+      temp.style.color = 'rgb(135, 117, 255)';
+    }
+    else {
+      let temp = document.getElementById('musiclist');
+      temp.style.color = 'lightgrey';
+    }
+
+  }, [window.location.pathname])
 
   return (
     <div className="middle">
       <div className='middle_child'>
         <div className="slider">
-          <span id='ctime'>{update_time}</span>
           <input type="range" step='1' className='progress_bar' min={0} max={props.original_duration} value={props.progress} onChange={(e) => onScrub(e.target.value)} onMouseUp={(e) => onScrubend(e.target.value)} />
-          <span id='ttime'>{props.duration}</span>
+          <div>
+            <span id='ctime'>{update_time}</span>
+            <span id='ttime'>{props.duration}</span>
+          </div>
         </div>
         <div className="bttns">
           <i className="bi bi-shuffle" id='shuffle'></i>
@@ -141,8 +143,6 @@ function Audiocontrols(props) {
           <i className="bi bi-skip-end-fill" id='skipend' onClick={nextSong}></i>
           <i className="bi bi-repeat" id='repeat' onClick={repeat_function}></i>
         </div>
-        {/* <div style={{ 'display': 'flex', 'justifyContent': 'center' }}>
-        </div> */}
       </div>
     </div>
   )

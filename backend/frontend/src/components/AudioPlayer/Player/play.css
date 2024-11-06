@@ -85,6 +85,14 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.slider div{
+  margin: 6px 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 .progress_bar {
   height: 4px;
@@ -97,7 +105,7 @@
   padding-right: 14px;
   font-size: small;
   color: lightgray;
-  display: none;
+  /* display: none; */
 }
 #ttime {
   position: relative;
@@ -105,7 +113,7 @@
   padding-left: 14px;
   font-size: small;
   color: lightgray;
-  display: none;
+  /* display: none; */
 }
 #playbttn {
   font-size: 32px;
@@ -135,7 +143,7 @@
 /* right */
 .right {
   position: absolute;
-  bottom: 14%;
+  bottom: 17%;
   width: 100%;
   /* display: flex;
   justify-content: center;
