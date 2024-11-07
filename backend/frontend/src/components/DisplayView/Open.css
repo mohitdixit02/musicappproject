@@ -2,7 +2,7 @@
     overflow-y: overlay;
     z-index: 1;
     height: 100vh;
-    width: 75vw;
+    width: 100%;
 }
 .open_display::-webkit-scrollbar{
     scrollbar-gutter: stable;
@@ -15,30 +15,27 @@
 /* DIv for top region */
 .top_div{
     position: relative;
-    left: 0;
     background-image: linear-gradient(180deg,rgba(45, 45, 110, 0.541),rgba(21, 21, 32, 0.541));
     padding-top: 18px;
-}
-.musicshow_wrapper{
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-size: 100%;
-    filter: blur(18px);
-    opacity: 50%;
-    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 .open_top_heading{
+    width: 94%;
     color: white;
     display: flex;
     padding: 20px 0;
-    margin: 0 35px;
     background-color: rgba(82, 82, 82, 0.311);
     border-radius: 20px;
 }
 .heading_text{
     font-size: 15px;
     font-weight: bold;
-    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family:Arial, Helvetica, sans-serif;
 }
 .open_name_head{
@@ -52,7 +49,6 @@
 .open_top_heading_img_artist{
     height: 205px;
     width: 205px;
-    margin-top: 20px;
     margin-left: 40px;
 }
 
@@ -73,7 +69,7 @@
     cursor: pointer;
 }
  .heading_text button{
-    margin: 25px 0px 4px 5px;
+    margin: 25px 0px 4px 2px;
     border: 0;
     background-color: rgb(0, 0, 180);
     color: white;

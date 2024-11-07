@@ -15,10 +15,8 @@ function Catgdisplay(props) {
     const {
         trackslist,
         setTrackslist,
-        actvstate,
         setActivestate,
         current_track,
-        setCurrent_track
     } = useTrackContext();
     let location = useLocation();
     const data = location.state.data;
@@ -91,7 +89,7 @@ function Catgdisplay(props) {
 
     }, [ctrack]);
 
-    if (location.state['type'] == 'Category') {
+    if (location.state['type'] === 'Category') {
         const song = data['list'];
         function playsongtd(e) {
             let temp = e.target.parentElement.id;
@@ -128,7 +126,7 @@ function Catgdisplay(props) {
                                             </div>
                                         </td>
                                         <td className='songtd catg_album_name' style={{ 'width': '65%' }}>{element.album}</td>
-                                        <td className='songtd timeinfo_catg' style={{ 'borderBottomRightRadius': '5px', 'borderTopRightRadius': '5px', 'width': '30%', 'textAlign': 'right', 'paddingRight': '15px' }}><div style={{ 'display': 'flex', 'columnGap': '30px', 'paddingRight': '5px' }}><i className="bi bi-heart" id={`heart ${element.id}`} onClick={liked_song}></i><span>{duration}</span></div></td>
+                                        <td className='songtd timeinfo_catg' style={{ 'borderBottomRightRadius': '5px', 'borderTopRightRadius': '5px', 'width': '30%' }}><div style={{ 'display': 'flex', 'columnGap': '30px', 'paddingRight': '5px' }}><i className="bi bi-heart" id={`heart ${element.id}`} onClick={liked_song}></i><span>{duration}</span></div></td>
                                     </tr>
                                 )
                             })
@@ -138,33 +136,7 @@ function Catgdisplay(props) {
             </div>
         )
     }
-    else if (location.state['type'] == 'artist') {
-        const artist = data;
-        const artist_separate = [];
-
-        function artistdivide_length(){
-            if(window.innerWidth > 1411){
-              return 5;
-            }
-            else if(window.innerWidth > 1151){
-              return 4;
-            }
-            else if(window.innerWidth > 703){
-              return 3;
-            }
-            else{
-              return 2;
-            }
-          }
-        // generating data for display
-        for (let i = 0; i < artist.length; i = i + artistdivide_length()) {
-            let temp = artist.slice(i, i + artistdivide_length())
-            artist_separate.push({
-                'array_no': i / 5,
-                'array_data': temp
-            })
-        }
-
+    else if (location.state['type'] === 'artist') {
         //Artist Info function
         function artistinfo(e) {
             if (!e.target.id.includes('play')) {
@@ -195,40 +167,31 @@ function Catgdisplay(props) {
             <div className="catg_list">
                 <h2>Artist</h2>
                 <div className="flex_hold">
-                    <div className="artistdisplay_flex">
+                    <div className="artist_display_flex">
                         {
-                            artist_separate.map((sepr_key, index) => {
-                                let artist_array = sepr_key['array_data']
+                            data.map((artist_key, index) => {
+                                let temp = artist_key[0];
                                 return (
-                                    <div className="artist_indv_flex">
-                                        {
-                                            artist_array.map((artist_key, index) => {
-                                                let temp = artist_key[0];
-                                                return (
-                                                    <div key={temp.id} className='cover_box' >
-                                                        <div className="genbox">
-                                                            <div>
-                                                                <img src={`${temp.firebase_artist_image_url}`} alt="Image" className="genbox_img artist" />
-                                                            </div>
-                                                            <div className="genbox_text1 artisttext">
-                                                                {temp.name}
-                                                            </div>
-                                                            <div className="genbox_text2">Artist</div>
-                                                        </div>
-                                                        <div className="artist_cover" id={temp.name} onMouseEnter={getelement} onMouseLeave={removeelement} onClick={artistinfo}>
-                                                            <img src={p} className='playicon_design' id={`${temp.name} play`} onClick={artistPlay} />
-                                                        </div>
-                                                    </div>
-                                                )
-                                            })
-                                        }
+                                    <div key={temp.id} className='cover_box' >
+                                        <div className="genbox">
+                                            <div className='genbox_img_holder'>
+                                                <img src={`${temp.firebase_artist_image_url}`} alt="Image" className="genbox_img artist" />
+                                            </div>
+                                            <div className="genbox_text1 artisttext">
+                                                {temp.name}
+                                            </div>
+                                            <div className="genbox_text2">Artist</div>
+                                        </div>
+                                        <div className="artist_cover" id={temp.name} onMouseEnter={getelement} onMouseLeave={removeelement} onClick={artistinfo}>
+                                            <img src={p} className='playicon_design' id={`${temp.name} play`} onClick={artistPlay} />
+                                        </div>
                                     </div>
                                 )
                             })
                         }
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 }

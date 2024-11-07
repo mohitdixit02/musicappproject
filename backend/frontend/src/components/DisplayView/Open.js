@@ -35,10 +35,10 @@ const Open = () => {
                         <img className='open_top_heading_img' src={`${temp.firebase_image_url}`} />
                         <div className='heading_text'>
                             <ul type='none'>
-                                <li style={{ 'marginLeft': '6px' }}>{temp.album}</li>
+                                <li style={{ 'marginLeft': '3px' }}>{temp.album}</li>
                                 <li className='open_name_head'>{temp.name}</li>
                                 <br />
-                                <li style={{ 'marginLeft': '6px' }}>{temp.artist} . 1 song</li>
+                                <li style={{ 'marginLeft': '3px' }}>{temp.artist} . 1 song</li>
                                 <button onClick={play_open_audio}>
                                     Play
                                 </button>
@@ -69,26 +69,23 @@ const Open = () => {
         return (
             <div className="open_display">
                 <div className="top_div">
-                    {/* <div className='musicshow_wrapper' style={{
-                    'backgroundImage': `url(${artist_info.about_img})`
-                    }}></div> */}
                     <div className='open_top_heading'>
                         <img className='open_top_heading_img_artist' src={`${artist_info.firebase_artist_image_url}`} style={{
                             'borderRadius': '300px'
                         }} />
-                        <div className='heading_text' style={{ 'paddingTop': '28px' }}>
+                        <div className='heading_text'>
                             <ul type='none'>
                                 <li style={{ 'display': 'flex' }}><img src={tick} height={'40px'} width={'75px'} /><span style={{ 'position': 'relative', 'top': '10px', 'right': '18px' }}>Verified Artist</span>
                                 </li>
                                 <li className='open_name_head' style={{ 'marginLeft': '28px' }}>{artist_info.name}</li>
-                                <br />
-                                <li style={{ 'marginLeft': '32px' }}>{listn} monthly listeners</li>
+                                <li style={{ 'marginLeft': '32px', 'marginTop':'5px' }}>{listn} monthly listeners</li>
                                 <button style={{ 'marginLeft': '29px' }} onClick={play_open_artistaudio}>
                                     Play
                                 </button>
                             </ul>
                         </div>
-                    </div></div>
+                    </div>
+                </div>
                 <div className="open_bottom_area">
                     {/* <div>
                         <div style={{ 'display': 'flex' }}>

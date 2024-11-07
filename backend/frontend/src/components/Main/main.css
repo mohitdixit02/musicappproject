@@ -123,6 +123,9 @@
     height: 100%;
     width: 100%;
     font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
 }
 .genbox_img{
     border-radius: 4px;
@@ -130,20 +133,20 @@
     width: 100%;
 }
 .genbox_text1{
+    width: 100%;
     text-align: center;
     font-size: 1.1rem;
     color: white;
     font-weight: bolder;
     position: relative;
-    padding: 5px 3px 5px 4px;
 }
 .genbox_text2{
+    width: 100%;
     text-align: center;
     position: relative;
     color: white;
     font-size: 0.7rem;
     font-weight: 400;
-    padding: 1px 3px 5px 6px;
 }
 .genbox_main{
     padding: 10px 36px;
