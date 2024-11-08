@@ -156,7 +156,7 @@ function Catgdisplay(props) {
             let play_id = e.target.id;
             play_id = play_id.substr(0, play_id.length - 5);
             try {
-                axios.get(`/req_data/artist/${play_id}`).then((response) => {
+                axios.get(`${backend_url}/req_data/artist/${play_id}`).then((response) => {
                     let temp = response.data[0]
                     trackfn(temp['artist_song_list']);
                 })

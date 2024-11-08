@@ -87,11 +87,6 @@ const Open = () => {
                     </div>
                 </div>
                 <div className="open_bottom_area">
-                    {/* <div>
-                        <div style={{ 'display': 'flex' }}>
-                            <i className="bi bi-play-circle" onClick={play_open_artistaudio}></i>
-                        </div>
-                    </div> */}
                     <OpenSonglist songlist={artist_song_data} type={'album'} />
                     <div className="about">
                         <h1>About</h1>
@@ -151,16 +146,14 @@ const Open = () => {
                                 <li className='open_name_head'>{temp.album}</li>
                                 <br />
                                 <li style={{ 'marginLeft': '6px' }}>{temp.artist} . {song_no}</li>
+                                <button onClick={play_open_album}>
+                                    Play
+                                </button>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div className="open_bottom_area">
-                    <div>
-                        <div style={{ 'display': 'flex' }}>
-                            <i className="bi bi-play-circle" onClick={play_open_album}></i>
-                        </div>
-                    </div>
                     <OpenSonglist songlist={song_data} type={'album'} />
                 </div>
             </div>

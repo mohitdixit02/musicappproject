@@ -59,7 +59,7 @@ const Main = () => {
         let play_id = e.target.id;
         play_id = play_id.substr(0, play_id.length - 5);
         try {
-            axios.get(`/req_data/${play_id}`).then((response) => {
+            axios.get(`${backend_url}/req_data/${play_id}`).then((response) => {
                 trackfn([response.data[0]]);
             })
         } catch { }
@@ -143,7 +143,7 @@ const Main = () => {
         let play_id = e.target.id;
         play_id = play_id.substr(0, play_id.length - 5);
         try {
-            axios.get(`/req_data/artist/${play_id}`).then((response) => {
+            axios.get(`${backend_url}/req_data/artist/${play_id}`).then((response) => {
                 let temp = response.data[0]
                 trackfn(temp['artist_song_list']);
             })
@@ -233,31 +233,6 @@ const Main = () => {
                         <div className='topbox'>
                             <img src={img_data['top_banner']} alt="" />
                         </div>
-                        {/* <div className="topbox" onClick={getAlbum} id={'No Competition'}>
-                            <div>
-                                <img src={img_data['No Competition']} alt="Image" className="topbox_img" id={'No Competition'} />
-                            </div>
-                        </div>
-                        <div className="topbox" id={'Rambo'} onClick={getAlbum}>
-                            <div>
-                                <img src={img_data['Rambo']} alt="Image" className="topbox_img" id={'Rambo'} />
-                            </div>
-                        </div>
-                        <div className="topbox" onClick={artistinfo} id={'Karan Aujla'}>
-                            <div>
-                                <img src={img_data['Karan Aujla']} alt="Image" className="topbox_img" id={'Karan Aujla'} />
-                            </div>
-                        </div>
-                        <div className="topbox" onClick={artistinfo} id={'Sidhu Moosewala'}>
-                            <div>
-                                <img src={img_data["Braat"]} alt="Image" className="topbox_img" id={'Sidhu Moosewala'} />
-                            </div>
-                        </div>
-                        <div className="topbox" onClick={musicinfo} id={10}>
-                            <div>
-                                <img src={img_data['Kesariya']} alt="Image" className="topbox_img" id={10} />
-                            </div>
-                        </div> */}
                     </div>
                 </div>
                 {

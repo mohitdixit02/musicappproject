@@ -9,7 +9,7 @@ import { ref, set, onValue, remove } from "firebase/database"
 import database from '../../Firebase/Firebase'
 import { GetMusicinfo, GetArtistinfo, GetAlbuminfo, GetCategory } from '../utility/server_request_functions';
 import { backend_url } from '../utility/url_info';
-import {getTrackConetxt, useTrackContext} from "../MainWrapper/MainWrapper";
+import { getTrackConetxt, useTrackContext } from "../MainWrapper/MainWrapper";
 
 function Searchpage(props) {
   const navigate = useNavigate();
@@ -125,7 +125,7 @@ function Searchpage(props) {
     let play_id = e.target.id;
     play_id = play_id.substr(0, play_id.length - 5);
     try {
-      axios.get(`/req_data/artist/${play_id}`).then((response) => {
+      axios.get(`${backend_url}/req_data/artist/${play_id}`).then((response) => {
         let temp = response.data[0]
         trackfn(temp['artist_song_list']);
       })
@@ -223,7 +223,7 @@ function Searchpage(props) {
       if (k.className == 'bi bi-heart') {
         k.className = 'bi bi-heart-fill heart_icon';
         //Setting database
-        axios.get(`/req_data/${icon_id}`).then((response) => {
+        axios.get(`${backend_url}/req_data/${icon_id}`).then((response) => {
           const data = response.data[0];
           set(ref(database, 'users/' + user + '/liked/' + icon_id + '/'), {
             song: data
@@ -310,7 +310,7 @@ function Searchpage(props) {
     let play_id = e.target.id;
     play_id = play_id.substr(0, play_id.length - 5);
     try {
-      axios.get(`/req_data/${play_id}`).then((response) => {
+      axios.get(`${backend_url}/req_data/${play_id}`).then((response) => {
         trackfn([response.data[0]]);
       })
     } catch { }
@@ -390,11 +390,13 @@ function Searchpage(props) {
                               <div>
                                 <img src={`${top_key.firebase_artist_image_url}`} alt="Image" className="searchresult_img" />
                               </div>
-                              <div className="searchresult_text1">
-                                {top_key.name}
-                              </div>
-                              <div className="searchresult_text2">
-                                Artist
+                              <div>
+                                <div className="searchresult_text1">
+                                  {top_key.name}
+                                </div>
+                                <div className="searchresult_text2">
+                                  Artist
+                                </div>
                               </div>
                             </div>
                             <div className="searchmusic_cover" id={top_key.name} onMouseEnter={getelement_search} onMouseLeave={removeelement_search} onClick={artistinfo}>
@@ -410,11 +412,13 @@ function Searchpage(props) {
                               <div>
                                 <img src={`${top_key.firebase_image_url}`} alt="Image" className="searchresult_img" />
                               </div>
-                              <div className="searchresult_text1">
-                                {top_key.album}
-                              </div>
-                              <div className="searchresult_text2">
-                                Album
+                              <div>
+                                <div className="searchresult_text1">
+                                  {top_key.album}
+                                </div>
+                                <div className="searchresult_text2">
+                                  Album
+                                </div>
                               </div>
                             </div>
                             <div className="searchmusic_cover" id={top_key.album} onMouseEnter={getelement_search} onMouseLeave={removeelement_search} onClick={getAlbum}>
