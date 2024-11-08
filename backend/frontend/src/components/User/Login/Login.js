@@ -4,6 +4,7 @@ import "./Login.css";
 import axios from "axios";
 import { backend_url } from "../../utility/url_info";
 import getCSRFToken from "../../utility/session";
+import { toast } from 'react-toastify';
 
 export default function Login() {
     const [login, setLogin] = useState(true);
@@ -29,11 +30,18 @@ export default function Login() {
             }
             ,).then((response) => {
                 const resp = response.data;
-                if(resp.code === "success"){
+                if (resp.code === "success") {
                     sessionStorage.setItem('user', resp.user_id);
                     sessionStorage.setItem('first_name', resp.first_name);
+                    toast.success("Login Successful");
                     closePopUp();
                     window.location.reload();
+                }
+                else if (resp.code === "alert") {
+                    toast.warn(resp.message);
+                }
+                else {
+                    toast.error(resp.message);
                 }
             })
     }
@@ -69,7 +77,17 @@ export default function Login() {
                 withCredentials: true,
             }
             ,).then((response) => {
-                console.log(response.data);
+                const resp = response.data;
+                if (resp.code === "success") {
+                    toast.success(resp.message);
+                    closePopUp();
+                }
+                else if (resp.code === "alert") {
+                    toast.warn(resp.message);
+                }
+                else {
+                    toast.error(resp.message);
+                }
             })
     }
 

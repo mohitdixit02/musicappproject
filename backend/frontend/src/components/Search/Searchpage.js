@@ -10,6 +10,7 @@ import database from '../../Firebase/Firebase'
 import { GetMusicinfo, GetArtistinfo, GetAlbuminfo, GetCategory } from '../utility/server_request_functions';
 import { backend_url } from '../utility/url_info';
 import { getTrackConetxt, useTrackContext } from "../MainWrapper/MainWrapper";
+import { toast } from 'react-toastify';
 
 function Searchpage(props) {
   const navigate = useNavigate();
@@ -217,7 +218,7 @@ function Searchpage(props) {
   //Liked Songs function
   function liked_song(e) {
     if(user === "none"){
-      alert("Please login to like songs")
+      toast.warn("Please login to like songs")
       return;
     }
 
@@ -234,11 +235,13 @@ function Searchpage(props) {
             song: data
           })
         })
+        toast.success('Added to Liked Songs');
       }
       else {
         k.className = 'bi bi-heart';
         // removing data
         remove(ref(database, 'users/' + user + '/liked/' + icon_id + '/'))
+        toast.success('Removed from Liked Songs');
       }
     }
   }

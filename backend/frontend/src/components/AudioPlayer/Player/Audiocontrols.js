@@ -81,8 +81,7 @@ function Audiocontrols(props) {
   //Audio Converting
   let update_time = props.progress
   update_time = conv(update_time);
-  console.log(props.progress);
-
+  
   //TrackChange
   function onScrub(value) {
     props.SetProgress(value);

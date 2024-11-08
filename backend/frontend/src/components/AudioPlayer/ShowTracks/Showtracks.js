@@ -7,6 +7,7 @@ import axios from 'axios';
 import './Showtrack.css';
 import { backend_url } from "../../utility/url_info";
 import { useTrackContext } from '../../MainWrapper/MainWrapper';
+import {toast} from 'react-toastify';
 
 function Showtracks(props) {
     const {
@@ -42,7 +43,7 @@ function Showtracks(props) {
     //Liked Songs function
     function liked_song(e) {
         if(user === 'none'){
-            alert('Please login to like songs');
+            toast.warn('Please login to like songs');
             return;
         }
         let icon_id = e.target.id;
@@ -58,11 +59,13 @@ function Showtracks(props) {
                         song: data
                     })
                 })
+                toast.success('Added to Liked Songs');
             }
             else {
                 k.className = 'bi bi-heart';
                 // removing data
                 remove(ref(database, 'users/' + user + '/liked/' + icon_id + '/'))
+                toast.success('Removed from Liked Songs');
             }
         }
     }

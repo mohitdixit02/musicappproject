@@ -1,5 +1,6 @@
 import './App.css';
 import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 import { useState } from 'react';
 import Main from './components/Main/Main';
 import Navbar from './components/navbar/Navbar';
@@ -21,7 +22,18 @@ function App() {
 
   return (
     <div className='app'>
-      <ToastContainer />
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+       />
       <Login />
       <Routes>
         <Route exact path='*' element={

@@ -3,6 +3,7 @@ import axios from 'axios'
 // import { useNavigate } from 'react-router-dom'
 import { backend_url } from "../../utility/url_info";
 import user_image from "../../../media/user_logo.jpg";
+import { toast } from 'react-toastify';
 
 function User() {
   const [user, setUser] = useState('none');
@@ -31,6 +32,7 @@ function User() {
         setUser("none");
         sessionStorage.removeItem('user');
         sessionStorage.removeItem('first_name');
+        toast.success("Logged out successfully");
       }
     });
   }

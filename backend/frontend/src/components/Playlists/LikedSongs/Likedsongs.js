@@ -7,6 +7,7 @@ import { ref, set, onValue, remove } from "firebase/database"
 import database from '../../../Firebase/Firebase'
 import { backend_url } from '../../utility/url_info';
 import { useTrackContext } from "../../MainWrapper/MainWrapper";
+import { toast } from 'react-toastify'
 
 function Likedsongs(props) {
     //Getting Song_data
@@ -108,6 +109,7 @@ function Likedsongs(props) {
                         song: data
                     })
                 })
+                toast.success('Added to Liked Songs');
             }
             else {
                 k.className = 'bi bi-heart';
@@ -127,6 +129,7 @@ function Likedsongs(props) {
                         key.innerText = (check_value - 2);
                     }
                 }
+                toast.success('Removed from Liked Songs');
             }
         }
     }
@@ -179,19 +182,17 @@ function Likedsongs(props) {
                         <ul type='none'>
                             <li style={{ 'marginLeft': '6px' }}>Playlist</li>
                             <li className='liked_head'>Liked Songs</li>
-                            <br />
                             <li style={{ 'marginLeft': '6px' }}>{name} {songno()}</li>
+                            {user === 'none' || song_data == 'none' ? <></> :
+                                <button style={{'backgroundColor':'red'}} onClick={play_open_like}>
+                                    Play
+                                </button>
+                            }
                         </ul>
                     </div>
                 </div>
             </div>
             <div className="liked_bottom_area">
-                <div>
-                    {user === 'none' || song_data == 'none' ? <></> :
-                    <div style={{ 'display': 'flex' }} className='playicon_liked'>
-                        <img alt='play_icon' src={p} onClick={play_open_like} id='playicon_main_liked' />
-                    </div>}
-                </div>
                 {(user !== 'none' && song_data !== 'none' ?
                     <div className="liked_list">
                         <table className='likedtable' cellSpacing={0}>
@@ -232,9 +233,9 @@ function Likedsongs(props) {
                     :
                     <div className='error_show'>
                         <div>Nothing to show <br />
-                        <span id='error_small_show'>
-                            {user === 'none' ? "You have to Login to access this feature" : "You haven't liked any song yet, Let's Start"}
-                        </span>
+                            <span id='error_small_show'>
+                                {user === 'none' ? "You have to Login to access this feature" : "You haven't liked any song yet, Let's Start"}
+                            </span>
                         </div>
                     </div>
                 )}

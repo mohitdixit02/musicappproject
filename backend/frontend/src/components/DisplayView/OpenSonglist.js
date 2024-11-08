@@ -6,6 +6,7 @@ import conv from '../utility/time_conv';
 import axios from 'axios'
 import {backend_url} from '../utility/url_info';
 import { useTrackContext } from '../MainWrapper/MainWrapper';
+import { toast } from 'react-toastify';
 
 function OpenSonglist(props) {
     const {
@@ -37,7 +38,7 @@ function OpenSonglist(props) {
     //Liked Songs function
     function liked_song(e) {
         if(user === 'none'){
-            alert('Please login to like the song');
+            toast.warn('Please login to like the song');
             return;
         }
         let icon_id = e.target.id;
@@ -53,11 +54,13 @@ function OpenSonglist(props) {
                         song: data
                     })
                 })
+                toast.success('Added to Liked Songs');
             }
             else {
                 k.className = 'bi bi-heart';
                 // removing data
                 remove(ref(database, 'users/' + user + '/liked/' + icon_id + '/'))
+                toast.success('Removed from Liked Songs');
             }
         }
     }
