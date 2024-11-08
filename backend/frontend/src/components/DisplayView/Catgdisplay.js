@@ -21,13 +21,18 @@ function Catgdisplay(props) {
     let location = useLocation();
     const data = location.state.data;
     const navigate = useNavigate();
-    const user = sessionStorage.getItem('user');
+    const user = sessionStorage.getItem('user') || "none";
     const trackfn = setTrackslist;
     const tracklist = trackslist;
     const ctrack = current_track;
 
     //Liked Songs function
     function liked_song(e) {
+        if(user === 'none'){
+            alert('Please login to like songs'); 
+            return;
+        }
+
         let icon_id = e.target.id;
         icon_id = icon_id.substr(6, icon_id.length - 5);
         let k = document.getElementById(e.target.id);

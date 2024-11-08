@@ -19,7 +19,7 @@ function Searchpage(props) {
   const [album, setAlbum] = useState([]);
   const [top, setTopinfo] = useState([]);
   const [type, setType] = useState('');
-  const user = props.user;
+  const user = sessionStorage.getItem('user') || "none";
 
   const {
     trackslist,
@@ -216,6 +216,11 @@ function Searchpage(props) {
 
   //Liked Songs function
   function liked_song(e) {
+    if(user === "none"){
+      alert("Please login to like songs")
+      return;
+    }
+
     let icon_id = e.target.id;
     icon_id = icon_id.substr(6, icon_id.length - 5);
     let k = document.getElementById(e.target.id);

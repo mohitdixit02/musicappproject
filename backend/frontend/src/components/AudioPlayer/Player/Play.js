@@ -73,9 +73,9 @@ export default function Play() {
   function setTimer() {
     clearInterval(progress_interval);
     progress_interval.current = setInterval(() => {
-      if (parseInt(song_current.current.currentTime) == durn) {
+      if (parseInt(song_current.current.currentTime) === durn) {
         if (!repeat) {
-          if (index != (tracklist.length - 1)) {
+          if (index !== (tracklist.length - 1)) {
             setIndex(index + 1);
           }
           else {
@@ -173,7 +173,23 @@ export default function Play() {
         <div className='volume_button_holder'>
           <i className="bi bi-volume-up" id='volume_bttn' onClick={(e) => volume_bttn(e.target)}></i>
           <div className="volume_slider" value='100'>
-            <input type='range' id='volume_slider' value={volume_level} min='0' max='100' onChange={(e) => volumechange(e.target.value)} />
+            <input
+              type='range'
+              id='volume_slider'
+              value={volume_level}
+              min='0'
+              max='100'
+              onChange={(e) => volumechange(e.target.value)}
+              style={{
+                'background': `linear-gradient(
+              to right,
+              rgb(144, 116, 255) 0%, 
+              rgb(144, 116, 255) ${volume_level}%, 
+              #ccc ${volume_level}%, 
+              #ccc 100%)`,
+                'height': '5px'
+              }}
+            />
           </div>
         </div>
         <div className='note_list_holder' onClick={showTracks}>

@@ -81,6 +81,7 @@ function Audiocontrols(props) {
   //Audio Converting
   let update_time = props.progress
   update_time = conv(update_time);
+  console.log(props.progress);
 
   //TrackChange
   function onScrub(value) {
@@ -113,6 +114,22 @@ function Audiocontrols(props) {
     }
   }
 
+  // function for audio slide gradient css
+  function get_progress_gradient() {
+    // parseInt(props.progress) / parseInt(props.original_duration)) * 100
+    let current_progress = parseInt(props.progress);
+    let original_duration = parseInt(props.original_duration);
+    if(original_duration === 0){
+      original_duration = 1;
+    }
+    return `linear-gradient(
+      to right,
+      rgb(144, 116, 255) 0%, 
+      rgb(144, 116, 255) ${(current_progress / original_duration) * 100}%, 
+      #ccc ${(current_progress / original_duration) * 100}%, 
+      #ccc 100%)`;
+  }
+
   //Function to show tracks list
   useEffect(() => {
     if (window.location.pathname == '/currenttrack') {
@@ -130,7 +147,20 @@ function Audiocontrols(props) {
     <div className="middle">
       <div className='middle_child'>
         <div className="slider">
-          <input type="range" step='1' className='progress_bar' min={0} max={props.original_duration} value={props.progress} onChange={(e) => onScrub(e.target.value)} onMouseUp={(e) => onScrubend(e.target.value)} />
+          <input
+            type="range"
+            step='1'
+            className='progress_bar'
+            min={0}
+            max={props.original_duration}
+            value={props.progress}
+            onChange={(e) => onScrub(e.target.value)}
+            onMouseUp={(e) => onScrubend(e.target.value)}
+            style={{
+              'background': get_progress_gradient(),
+              'height':'5px'
+            }}
+          />
           <div>
             <span id='ctime'>{update_time}</span>
             <span id='ttime'>{props.duration}</span>

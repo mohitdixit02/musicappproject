@@ -20,7 +20,7 @@ function Showtracks(props) {
 
     let location = useLocation();
     const song = location?.state?.data;
-    const user = sessionStorage.getItem('user');
+    const user = sessionStorage.getItem('user') || 'none';
     const trackfn = setTrackslist;
     const tracklist = trackslist;
     const ctrack = current_track;
@@ -41,14 +41,18 @@ function Showtracks(props) {
 
     //Liked Songs function
     function liked_song(e) {
+        if(user === 'none'){
+            alert('Please login to like songs');
+            return;
+        }
         let icon_id = e.target.id;
         icon_id = icon_id.substr(6, icon_id.length - 5);
         let k = document.getElementById(e.target.id);
-        if (user != 'none') {
+        if (user !== 'none') {
             if (k.className == 'bi bi-heart') {
                 k.className = 'bi bi-heart-fill heart_icon';
                 //Setting database
-                axios.get(`/req_data/${icon_id}`).then((response) => {
+                axios.get(`${backend_url}/req_data/${icon_id}`).then((response) => {
                     const data = response.data[0];
                     set(ref(database, 'users/' + user + '/liked/' + icon_id + '/'), {
                         song: data

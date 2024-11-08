@@ -12,7 +12,7 @@ function Likedsongs(props) {
     //Getting Song_data
     const [song_data, setData] = useState([]);
     const [data_length, setDatalength] = useState();
-    const user = sessionStorage.getItem("user");
+    const user = sessionStorage.getItem("user") || "none";
     const {
         trackslist,
         setTrackslist,
@@ -28,7 +28,7 @@ function Likedsongs(props) {
     })
 
     // Fetching Song_data
-    if (user != 'none') {
+    if (user !== 'none') {
         setTimeout(() => {
             onValue(ref(database, 'users/' + user + '/liked/'), (snapshot) => {
                 const value = snapshot.val();
@@ -55,7 +55,6 @@ function Likedsongs(props) {
             })
         }, 50)
     }
-    // const data = song_data;
 
     const data = song_data;
     function songno() {
@@ -99,7 +98,7 @@ function Likedsongs(props) {
         let icon_id = e.target.id;
         icon_id = icon_id.substr(6, icon_id.length - 5);
         let k = document.getElementById(e.target.id);
-        if (user != 'none') {
+        if (user !== 'none') {
             if (k.className == 'bi bi-heart') {
                 k.className = 'bi bi-heart-fill heart_icon';
                 //Setting data
@@ -234,7 +233,7 @@ function Likedsongs(props) {
                     <div className='error_show'>
                         <div>Nothing to show <br />
                         <span id='error_small_show'>
-                            {user == 'none' ? "You have to Login to access this feature" : "You haven't liked any song yet, Let's Start"}
+                            {user === 'none' ? "You have to Login to access this feature" : "You haven't liked any song yet, Let's Start"}
                         </span>
                         </div>
                     </div>

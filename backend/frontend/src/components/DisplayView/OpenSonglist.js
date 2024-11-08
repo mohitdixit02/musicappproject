@@ -18,7 +18,7 @@ function OpenSonglist(props) {
     const trackfn = setTrackslist;
     const tracklist = trackslist;
     const ctrack = current_track;
-    const user = sessionStorage.getItem('user');
+    const user = sessionStorage.getItem('user') || "none";
     function playsongtd(e) {
         let temp = e.target.parentElement.id;
         if (temp != '') {
@@ -36,6 +36,10 @@ function OpenSonglist(props) {
 
     //Liked Songs function
     function liked_song(e) {
+        if(user === 'none'){
+            alert('Please login to like the song');
+            return;
+        }
         let icon_id = e.target.id;
         icon_id = icon_id.substr(6, icon_id.length - 5);
         let k = document.getElementById(e.target.id);
