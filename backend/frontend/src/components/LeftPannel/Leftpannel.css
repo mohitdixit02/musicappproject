@@ -93,6 +93,7 @@
 .bi-file-music-fill{
     font-size: 1.42rem;
     border-radius: 2px;
+    cursor: pointer;
 }
 .likedheart{
     font-size: 1rem;

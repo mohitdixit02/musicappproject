@@ -1,59 +1,45 @@
 /* Top display */
+.playlist_header_top{
+    width: 95%;
+    background: linear-gradient(135deg, rgb(36, 152, 36) 60%, rgb(157, 168, 156));
+}
 #playlist_icon{
-    background-color: rgb(38, 38, 38);
+    background: linear-gradient(135deg, rgb(151, 240, 151), rgb(157, 168, 156));
     font-size: 75px;
     border-radius: 5px;
     padding: 80px 80px 70px 80px;
-    color: rgb(117, 109, 109);
+    margin: 0 15px;
+    color: rgb(212, 222, 209);
 }
-/* .heading_text ul li input{
-    height: 78px;
-    width: 526.92px;
-    font-size: 70px;
-    font-weight: bold;
-    outline: none;
-    border: 0;
-    color: lightgrey;
-    background-color: rgb(84, 84, 84);
+.playlist_heading_text button{
+    background-color: rgb(18, 105, 15);
 }
-.heading_text ul li button{
-    height: 78px;
-    width: 78px;
-    font-size: 70px;
-    font-weight: bold;
-    outline: none;
-    border: 0;
-    color: white;
-    background-color: rgb(84, 84, 84);
-} */
-
 
 /* bottom display */
 .playlist_bottom_area{
+    width: 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 68.6vh;
-    padding-bottom: 20px;
+    margin-bottom: 90px;
 }
-.playlist_line{
-    border: 0;
-    background-color: rgb(87, 87, 87);
-    height: 1px;
-    margin: 14px 64px 10px 40px;
+.playlist_search{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .playlist_search span{
     color: white;
     font-weight: bold;
     font-size: 20px;
 }
-.playlist_search input{
-    margin-top: 30px;
+#cross_hide_search_internal input{
     font-size: 15px;
-    height:36px ;
-    width: 374px;
+    height:45px ;
+    width: 98%;
     color: rgb(198, 198, 198);
     outline: none;
     border: 0;
-    background-color: rgba(43,43,42,255);
+    background-color:rgb(48, 54, 48);
+    border-radius: 6px;
     padding-left: 15px;
 }
 #playlist_holder{
@@ -63,14 +49,13 @@
     color: white;
     position: relative;
     display: none;
-    height: 20vh;
+    width: 100%;
+    text-align: right;
 }
-.findmore span{
-    margin-right: 32px;
+.findmore div{
     font-weight: bold;
     cursor: pointer;
-    position: absolute;
-    right: 50px;
+    width: 96%;
 }
 .findmore span:hover{
     text-decoration: underline;
@@ -84,18 +69,26 @@
 .playlist_search i:hover{
     color: white;
 }
+#cross_hide_search{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 #cross_hide_search_internal{
     display: flex;
-    column-gap: 50vw;
-    margin: 28px 15px 35px 40px;
+    flex-direction: column;
+    row-gap: 12px;
+    width: 93%;
 }
 
 /* Search song */
 .search_songdisplay{
-    width: 75vw;
+    width: 100%;
     overflow-y: scroll;
-    height: 220px;
-    margin-left: 50px;
+    max-height: 220px;
+    display: flex;
+    justify-content: center;
 }
 .search_songdisplay::-webkit-scrollbar{
     scrollbar-gutter: stable;
@@ -104,7 +97,25 @@
 .search_songdisplay::-webkit-scrollbar-thumb{
     background-color:slategray;
 }
+.search_songdisplay_child{
+    display: flex;
+    justify-content: space-between;
+    width: 93%;
+}
+.search_to_add_songs{
+    margin-top: 10px;
+    border-radius: 6px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    font-size: 18px;
+    background-color: rgba(35, 35, 41, 0.489);
+    height: 220px;
+}
 .table_playlist_search{
+    margin-top: 10px;
     text-align: left;
     width: 100%;
     font-size: 13px;

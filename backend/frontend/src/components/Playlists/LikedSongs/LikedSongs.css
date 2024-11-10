@@ -137,23 +137,25 @@
 
 /* error div */
 .error_show {
-    height: 38.6vh;
-    position: relative;
+    width: 97%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .error_show div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
     font-size: 35px;
     font-weight: bold;
-    position: absolute;
-    top: 15vh;
-    left: 32%;
     color: rgb(217, 217, 217);
 }
 
 #error_small_show {
     font-size: 15px;
     font-weight: bold;
-    position: relative;
     color: rgb(235, 103, 103);
 }
 

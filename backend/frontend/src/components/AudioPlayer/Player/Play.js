@@ -19,7 +19,7 @@ export default function Play() {
 
   //defined states
   const [isPlaying, setPlaystate] = useState(false);
-  const song_current = useRef(new Audio(''));
+  const song_current = useRef(new Audio('undefined'));
   const progress_interval = useRef();
   const [index, setIndex] = useState(0);
   const [trackprogress, SetProgress] = useState(0);
@@ -31,8 +31,7 @@ export default function Play() {
 
   // functions
   useEffect(() => {
-    if (tracklist != ['']) {
-      // console.log((song_current.current.src != (window.location.href)+'undefined') && (song_current.current.src != (window.location.href)))
+    if (!song_current.current.src.includes("undefined") && tracklist != ['']) {
       song_current.current.pause();
       let tempsong = tracklist[0];
       song_current.current = new Audio(`${tempsong['firebase_mp3_url']}`);
@@ -44,13 +43,15 @@ export default function Play() {
   }, [tracklist]);
 
   useEffect(() => {
-    setPlaystate(false);
-    song_current.current.pause();
-    let tempsong = tracklist[index];
-    song_current.current = new Audio(`${tempsong['firebase_mp3_url']}`);
-    song_current.current.play();
-    setPlaystate(true);
-    setCurrent_track(tracklist[index]);
+    if(!song_current.current.src.includes("undefined")){
+      setPlaystate(false);
+      song_current.current.pause();
+      let tempsong = tracklist[index];
+      song_current.current = new Audio(`${tempsong['firebase_mp3_url']}`);
+      song_current.current.play();
+      setPlaystate(true);
+      setCurrent_track(tracklist[index]);
+    }
   }, [index]);
 
   // activestate

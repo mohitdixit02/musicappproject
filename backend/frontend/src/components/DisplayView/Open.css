@@ -111,6 +111,13 @@
     color:rgb(255, 255, 255);
 }
 
+.playlist_listtable{
+    background-color: rgba(54, 63, 54, 0.445);
+}
+.playlist_listtable .songlist2_active:hover{
+    background-color: rgb(87, 102, 87);
+}
+
 .tabletopline{
     border: 0px;
     background-color: rgb(255, 255, 255);

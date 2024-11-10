@@ -107,13 +107,18 @@ function OpenSonglist(props) {
     }, [ctrack]);
 
     // Removing Song from Playlist
-    function remove_from_playlist(value,index){
+    async function remove_from_playlist(value,index){
         let icon_id = value;
         icon_id = icon_id.substr(7, icon_id.length -6);
 
+        // removing row
+        let setSongList = props.setSongList;
+        let songList = props.songlist;
+        setSongList(songList.filter((element) => element.id !== icon_id));
+
         //deleting data as well as row
         let target_row_no = document.getElementById(`${icon_id} index`).innerText;
-        remove(ref(database, 'users/' + user + '/playlist/' + props.url +'/data/'+ index));
+        await remove(ref(database, 'users/' + user + '/playlist/' + props.url +'/data/'+ index));
 
         //reducing index after deletion
         let rows_set = document.getElementsByClassName('index_class');
@@ -206,10 +211,9 @@ function OpenSonglist(props) {
         }
         case 'playlist': {
             let song = props.songlist
-            console.log(song)
             return (
                 <div className="song_list">
-                    <table className='listtable' cellSpacing={0}>
+                    <table className='listtable playlist_listtable' cellSpacing={0}>
                         <thead>
                             <tr>
                                 <th style={{ 'width': '10%', 'textAlign': 'center' }}>#</th>
@@ -223,7 +227,7 @@ function OpenSonglist(props) {
                             {
                                 song.map((element, index) => {
                                     let plays = element.plays
-                                    plays = plays.toLocaleString();
+                                    plays = plays?.toLocaleString() || 0;
                                     let duration = conv(element.duration);
                                     return (
                                         <tr key={index} id={element.id} className='songlist2_active' onClick={playsongtd}>

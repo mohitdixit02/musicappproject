@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { backend_url } from "../../utility/url_info";
 import user_image from "../../../media/user_logo.jpg";
 import { toast } from 'react-toastify';
@@ -17,7 +17,7 @@ function User() {
     }
   },[user]);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   //Login Pannel function
   function triggerLoginPannel() {
@@ -33,23 +33,13 @@ function User() {
         sessionStorage.removeItem('user');
         sessionStorage.removeItem('first_name');
         toast.success("Logged out successfully");
+        navigate('/');
+        setTimeout(() => {
+          window.location.reload();
+        })
       }
     });
   }
-
-  //Artist Info function
-  // function viewProfile() {
-  //   try {
-  //     axios.get('/user/fulluser').then((response) => {
-  //       navigate('/profile', {
-  //         state: {
-  //           'data': response.data[0],
-  //         }
-  //       })
-  //     }
-  //     );
-  //   } catch { }
-  // }
 
   return (
     <div>

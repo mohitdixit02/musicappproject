@@ -14,6 +14,8 @@ function Likedsongs(props) {
     const [song_data, setData] = useState([]);
     const [data_length, setDatalength] = useState();
     const user = sessionStorage.getItem("user") || "none";
+    const name = sessionStorage.getItem("first_name") || "Guest";
+    
     const {
         trackslist,
         setTrackslist,
@@ -22,11 +24,6 @@ function Likedsongs(props) {
     } = useTrackContext();
 
     //Playlist Owner
-    const [name, SetName] = useState('');
-    axios.get('/user/getuser/').then((response) => {
-        const resp = response.data[0];
-        SetName(resp['first_name'] + " . ");
-    })
 
     // Fetching Song_data
     if (user !== 'none') {
@@ -182,7 +179,7 @@ function Likedsongs(props) {
                         <ul type='none'>
                             <li style={{ 'marginLeft': '6px' }}>Playlist</li>
                             <li className='liked_head'>Liked Songs</li>
-                            <li style={{ 'marginLeft': '6px' }}>{name} {songno()}</li>
+                            <li style={{ 'marginLeft': '6px' }}>{name} . {songno()}</li>
                             {user === 'none' || song_data == 'none' ? <></> :
                                 <button style={{'backgroundColor':'red'}} onClick={play_open_like}>
                                     Play
@@ -232,7 +229,7 @@ function Likedsongs(props) {
                     </div>
                     :
                     <div className='error_show'>
-                        <div>Nothing to show <br />
+                        <div>Nothing to show
                             <span id='error_small_show'>
                                 {user === 'none' ? "You have to Login to access this feature" : "You haven't liked any song yet, Let's Start"}
                             </span>

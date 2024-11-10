@@ -1,24 +1,31 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Library.css'
+import { ref, onValue} from "firebase/database"
+import database from '../../Firebase/Firebase'
 
 function Library() {
-    const [checkuser, checksetUser] = useState("");
-    setTimeout(() => {
-        axios.get('/user/getuser/').then((response) => {
-            const resp = response.data[0];
-            checksetUser(resp['user_id']);
-        });
-    }, 100);
+    const user = sessionStorage.getItem('user') || "none";
+
+    useEffect(() => {
+        onValue(ref(database, 'users/' + user + '/playlist/'), (snapshot) => {
+            const data = snapshot.val();
+            console.log(data);
+        })
+    });
+
     return (
         <div className="Library_main">
-            {checkuser == "User" ?
-                <div id='lib_text1'>Library is Empty
-                    <div id="lib_text2">Looks like you are Logout from your account</div>
+            {user === "none" ?
+                <div className='lib_text_holder_main'>
+                    <div id='lib_text1'>
+                        Library is Empty
+                        <div id="lib_text2">Looks like you are not logged in to your account</div>
+                    </div>
                 </div>
                 : <div className='library_display'>
-                    <Link to='/liked' style={{'textDecoration':'none', 'color':'white'}}><div className="liked_songs_library">
+                    <Link to='/liked' style={{ 'textDecoration': 'none', 'color': 'white' }}><div className="liked_songs_library">
                         <div className="icon_holder_liked_library"><i className='bi bi-heart-fill'></i></div>
                         <div className="txt_liked_songs_library">Liked Songs</div>
                     </div>

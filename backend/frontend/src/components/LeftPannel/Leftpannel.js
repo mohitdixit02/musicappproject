@@ -4,11 +4,13 @@ import { ref, set, onValue, remove } from "firebase/database"
 import database from '../../Firebase/Firebase'
 import { useNavigate, Link } from 'react-router-dom'
 import logo from '../../media/leftpannel_logo.png'
+import { toast } from 'react-toastify';
 
 const Leftpannel = () => {
-    const user = sessionStorage.getItem('user');
+    const user = sessionStorage.getItem('user') || "none";
     const url_state = window.location.pathname.split('/')[1];
-    setTimeout(() => {
+
+    useEffect(() => {
         let w = document.getElementsByClassName('leftpannel_actv')
         for (let item of w) {
             item.className = 'leftpannel_actv';
@@ -19,13 +21,17 @@ const Leftpannel = () => {
                 active.className = 'leftpannel_actv active';
             } catch { }
         }
-    }, 10)
+        if (!url_state.includes('playlist')) {
+            setPlaylistopen('none');
+        }
+    }, [url_state])
 
     const navigate = useNavigate();
 
     //Managing Playlist
     const [playlist_length, setPlaylistlength] = useState(0);
     const [playlist_set, setPlaylistset] = useState([{ 'name': '' }]);
+    const [playlist_open, setPlaylistopen] = useState('none');
 
     setTimeout(() => {
         onValue(ref(database, 'users/' + user + '/playlist/'), (snapshot) => {
@@ -46,12 +52,15 @@ const Leftpannel = () => {
 
     //new playlist
     async function new_playlist() {
+        if(user === "none"){
+            toast.error('Please login to create a playlist');
+            return;
+        }
         set(ref(database, 'users/' + user + '/playlist/list' + `${(playlist_length + 1)}`), {
             'data': [],
             'name': `My Playlist #${playlist_length + 1}`,
             'url': `list${playlist_length + 1}`
         })
-
 
         navigate('/playlist', {
             state: {
@@ -61,6 +70,8 @@ const Leftpannel = () => {
                 'name': `My Playlist #${playlist_length + 1}`
             }
         })
+
+        setPlaylistopen(`list${playlist_length + 1}`);
 
         //color change
         let k = document.getElementsByClassName('list_left_class');
@@ -91,23 +102,30 @@ const Leftpannel = () => {
             act_k.className = 'list_left_class active_list'
         } catch { }
 
+        setPlaylistopen(value);
+
         onValue(ref(database, 'users/' + user + '/playlist/' + value + '/'), (snapshot) => {
             const data = snapshot.val();
-            navigate('/playlist', {
-                state: {
-                    'data': data,
-                    'url': value,
-                }
-            })
+            if (data) {
+                navigate('/playlist', {
+                    state: {
+                        'data': data,
+                        'url': value,
+                    }
+                })
+            }
         })
     }
 
     // deleting playlist function
     function delete_playlist(url) {
-        remove(ref(database, 'users/' + user + '/playlist/' + url + '/'));
-        if (window.location.pathname.includes('playlist')) {
+        if (window.location.pathname.includes('playlist') && playlist_open === url) {
             navigate('/');
         }
+        setTimeout(() => {
+            remove(ref(database, 'users/' + user + '/playlist/' + url + '/'));
+            setPlaylistset(playlist_set.filter((item) => item.url !== url));
+        });
     }
 
     // reset playlist link
@@ -135,32 +153,27 @@ const Leftpannel = () => {
 
     return (
         <div className='leftpannel'>
-            <div className="left_logo" style={{'color':'redx'}}>
+            <div className="left_logo" style={{ 'color': 'redx' }}>
                 <img src={logo} />
             </div>
             <div className='leftdx'>
                 <div className='left1'>
                     <ul type='none'>
                         <Link className='Link' to='/'><li className='leftpannel_actv' id='home'><i className="bi bi-house-door-fill"></i>
-                        {/* <span> Home</span> */}
                         </li></Link>
                         <Link className='Link' to='/search'><li className='leftpannel_actv' id='search'><i className="bi bi-search" ></i>
-                        {/* <span> Search</span> */}
                         </li></Link>
                         <Link className='Link' to='/library'><li className='leftpannel_actv' id='library'><i className="bi bi-collection-play" ></i>
-                        {/* <span> Your Library</span> */}
                         </li></Link>
                     </ul>
                 </div>
                 <div className='left2'>
                     <ul type='none'>
                         <li id='create' onClick={() => new_playlist()}><i className="bi bi-file-music-fill" ></i>
-                        {/* <span> New Playlist</span> */}
                         </li>
                         <Link className='Link' to='/liked'><li id='liked'>
-                        <i className="bi bi-heart-fill likedheart"></i>
-                            {/* <span> Liked Songs</span> */}
-                            </li></Link>
+                            <i className="bi bi-heart-fill likedheart"></i>
+                        </li></Link>
                     </ul>
                 </div>
                 <br />
@@ -169,9 +182,19 @@ const Leftpannel = () => {
                     <ul type='none' id='playlist_holder_pannel'>
                         {
                             playlist_set.map((value, index) => {
-                                if(value['name']!='') {
+                                if (value['name'] !== '') {
                                     return (
-                                        <li key={index} className='list_left_class'><span onClick={(e) => open_playlist(e.target.id)} id={value.url}>{value.name}</span><i className="bi bi-x" id={value.url} onClick={(e) => { delete_playlist(e.target.id) }}></i></li>
+                                        <li
+                                            key={index}
+                                            className='list_left_class'
+                                        >
+                                            <span
+                                                onClick={(e) => open_playlist(e.target.id)}
+                                                id={value.url}>
+                                                {value.name.slice(0, 4) + (value.name.length > 4 ? '...' : '')}
+                                            </span>
+                                            <i className="bi bi-x" id={value.url} onClick={(e) => { delete_playlist(e.target.id) }}></i>
+                                        </li>
                                     )
                                 }
                             })

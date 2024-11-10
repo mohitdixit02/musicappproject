@@ -1,6 +1,6 @@
 .Library_main{
-    width: 94vw;
-    height: 81.2vh;
+    width: 100%;
+    height: 100%;
     overflow-y: scroll ;
     background-color: rgba(21, 21, 32, 0.541);
 }
@@ -13,19 +13,22 @@
 }
 
 /* Logout */
+.lib_text_holder_main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    text-align: center;
+}
 #lib_text1{
-    position: absolute;
-    top: 30vh;
-    left: 27vw;
+    display: flex;
+    flex-direction: column;
     color: white;
     font-size: 45px;
     font-weight: bolder;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 #lib_text2{
-    position: relative;
-    text-align: center;
-    top: 10px;
     color: rgb(188, 182, 246);
     font-size: 16px;
     font-weight: bolder;
