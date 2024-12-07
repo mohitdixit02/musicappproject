@@ -1,6 +1,6 @@
 <h1>Music Web Application</h1>
 <p>
-    A full-stack music web application made as a self project to demonstrate the use of Django and React. The application is a platform having the following key features:
+    A full-stack music web application made as a self project to understand the concepts of Django and React. The application is a platform having the following key features:
     <ul>
         <li>Register and login to the application</li>
         <li>Search for different music categories</li>
